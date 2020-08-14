@@ -54,4 +54,9 @@ The following table shows the target hardware for the application projects.
 5. The LED indicates the success or failure:
    - The LED is turned ON when the DMAC memory transfer is successful
 
-Following table provides LED names:
+The following table provides the details of LED:
+
+| Board | LED name |
+| ----- | -------- |
+| PIC32MZ W1 Curiosity Board | RED LED (D202) |
+|||
