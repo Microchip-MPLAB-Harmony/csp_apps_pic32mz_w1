@@ -45,6 +45,6 @@ The following table shows the target hardware for the application projects.
 Refer to the following table for clock output pin and LED name for different boards:
 
 | Board      | Clock output pin |
-| ---------- | ---------------- |--------- |
+| ---------- | ---------------- |
 |  PIC32MZ W1 Curiosity Board  | pin #12 (PA4) of XPRO Header (J203)   |
 |||
