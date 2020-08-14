@@ -314,7 +314,7 @@ bool GPIO_PinInterruptCallbackRegister(
 
 // *****************************************************************************
 /* Function:
-    void CHANGE_NOTICE_A_InterruptHandler()
+    void CHANGE_NOTICE_A_InterruptHandler(void)
 
   Summary:
     Interrupt Handler for change notice interrupt for channel A.
@@ -322,7 +322,7 @@ bool GPIO_PinInterruptCallbackRegister(
   Remarks:
 	It is an internal function called from ISR, user should not call it directly.
 */
-void CHANGE_NOTICE_A_InterruptHandler()
+void CHANGE_NOTICE_A_InterruptHandler(void)
 {
     uint8_t i;
     uint32_t status;
