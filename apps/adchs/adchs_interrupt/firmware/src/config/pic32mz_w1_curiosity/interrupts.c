@@ -64,12 +64,12 @@ void ADC_DATA15_InterruptHandler( void );
 
 
 /* All the handlers are defined here.  Each will call its PLIB-specific function. */
-void __ISR(_TIMER_1_VECTOR, ipl1AUTO) TIMER_1_Handler (void)
+void __ISR(_TIMER_1_VECTOR, ipl1SRS) TIMER_1_Handler (void)
 {
     TIMER_1_InterruptHandler();
 }
 
-void __ISR(_ADC_DATA15_VECTOR, ipl1AUTO) ADC_DATA15_Handler (void)
+void __ISR(_ADC_DATA15_VECTOR, ipl1SRS) ADC_DATA15_Handler (void)
 {
     ADC_DATA15_InterruptHandler();
 }
