@@ -2,11 +2,11 @@
 
 # SPI SST26 flash write read
 
-This example uses the SPI peripheral library to write an array of values to the SST26 Flash and verify the value written by reading the values back and comparing it to the value written. The example application performs the SST26 write only once after a power on reset.
+This example demonstrates read and writing to SPI based SST26 flash
 
 ## Description
 
-Long description
+This example uses the SPI peripheral library to write an array of values to the SST26 Flash and verify the value written by reading the values back and comparing it to the value written. The example application performs the SST26 write only once after a power on reset.
 
 ## Downloading and building the application
 

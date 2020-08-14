@@ -61,29 +61,32 @@
 // *****************************************************************************
 // *****************************************************************************
 
+
 /*** Macros for SPI1_CS pin ***/
 #define SPI1_CS_Set()               (LATASET = (1<<1))
 #define SPI1_CS_Clear()             (LATACLR = (1<<1))
 #define SPI1_CS_Toggle()            (LATAINV= (1<<1))
-#define SPI1_CS_Get()               ((PORTA >> 1) & 0x1)
 #define SPI1_CS_OutputEnable()      (TRISACLR = (1<<1))
 #define SPI1_CS_InputEnable()       (TRISASET = (1<<1))
+#define SPI1_CS_Get()               ((PORTA >> 1) & 0x1)
 #define SPI1_CS_PIN                  GPIO_PIN_RA1
+
 /*** Macros for LED_RED pin ***/
 #define LED_RED_Set()               (LATKSET = (1<<1))
 #define LED_RED_Clear()             (LATKCLR = (1<<1))
 #define LED_RED_Toggle()            (LATKINV= (1<<1))
-#define LED_RED_Get()               ((PORTK >> 1) & 0x1)
 #define LED_RED_OutputEnable()      (TRISKCLR = (1<<1))
 #define LED_RED_InputEnable()       (TRISKSET = (1<<1))
+#define LED_RED_Get()               ((PORTK >> 1) & 0x1)
 #define LED_RED_PIN                  GPIO_PIN_RK1
+
 /*** Macros for SWITCH pin ***/
 #define SWITCH_Set()               (LATASET = (1<<10))
 #define SWITCH_Clear()             (LATACLR = (1<<10))
 #define SWITCH_Toggle()            (LATAINV= (1<<10))
-#define SWITCH_Get()               ((PORTA >> 10) & 0x1)
 #define SWITCH_OutputEnable()      (TRISACLR = (1<<10))
 #define SWITCH_InputEnable()       (TRISASET = (1<<10))
+#define SWITCH_Get()               ((PORTA >> 10) & 0x1)
 #define SWITCH_PIN                  GPIO_PIN_RA10
 
 
@@ -233,42 +236,42 @@ void GPIO_PortOutputEnable(GPIO_PORT port, uint32_t mask);
 
 static inline void GPIO_PinWrite(GPIO_PIN pin, bool value)
 {
-    GPIO_PortWrite(pin>>4, (uint32_t)(0x1) << (pin & 0xF), (uint32_t)(value) << (pin & 0xF));
+    GPIO_PortWrite((GPIO_PORT)(pin>>4), (uint32_t)(0x1) << (pin & 0xF), (uint32_t)(value) << (pin & 0xF));
 }
 
 static inline bool GPIO_PinRead(GPIO_PIN pin)
 {
-    return (bool)(((GPIO_PortRead(pin>>4)) >> (pin & 0xF)) & 0x1);
+    return (bool)(((GPIO_PortRead((GPIO_PORT)(pin>>4))) >> (pin & 0xF)) & 0x1);
 }
 
 static inline bool GPIO_PinLatchRead(GPIO_PIN pin)
 {
-    return (bool)((GPIO_PortLatchRead(pin>>4) >> (pin & 0xF)) & 0x1);
+    return (bool)((GPIO_PortLatchRead((GPIO_PORT)(pin>>4)) >> (pin & 0xF)) & 0x1);
 }
 
 static inline void GPIO_PinToggle(GPIO_PIN pin)
 {
-    GPIO_PortToggle(pin>>4, 0x1 << (pin & 0xF));
+    GPIO_PortToggle((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
 }
 
 static inline void GPIO_PinSet(GPIO_PIN pin)
 {
-    GPIO_PortSet(pin>>4, 0x1 << (pin & 0xF));
+    GPIO_PortSet((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
 }
 
 static inline void GPIO_PinClear(GPIO_PIN pin)
 {
-    GPIO_PortClear(pin>>4, 0x1 << (pin & 0xF));
+    GPIO_PortClear((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
 }
 
 static inline void GPIO_PinInputEnable(GPIO_PIN pin)
 {
-    GPIO_PortInputEnable(pin>>4, 0x1 << (pin & 0xF));
+    GPIO_PortInputEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
 }
 
 static inline void GPIO_PinOutputEnable(GPIO_PIN pin)
 {
-    GPIO_PortOutputEnable(pin>>4, 0x1 << (pin & 0xF));
+    GPIO_PortOutputEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
 }
 
 
