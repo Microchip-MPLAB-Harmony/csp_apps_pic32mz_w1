@@ -64,12 +64,12 @@ void I2C1_SLAVE_InterruptHandler( void );
 
 
 /* All the handlers are defined here.  Each will call its PLIB-specific function. */
-void __ISR(_I2C1_BUS_VECTOR, ipl1AUTO) I2C1_BUS_Handler (void)
+void __ISR(_I2C1_BUS_VECTOR, ipl1SRS) I2C1_BUS_Handler (void)
 {
     I2C1_BUS_InterruptHandler();
 }
 
-void __ISR(_I2C1_SLAVE_VECTOR, ipl1AUTO) I2C1_SLAVE_Handler (void)
+void __ISR(_I2C1_SLAVE_VECTOR, ipl1SRS) I2C1_SLAVE_Handler (void)
 {
     I2C1_SLAVE_InterruptHandler();
 }
