@@ -61,37 +61,41 @@
 // *****************************************************************************
 // *****************************************************************************
 
+
 /*** Macros for APP_SLAVE_CS pin ***/
 #define APP_SLAVE_CS_Set()               (LATKSET = (1<<7))
 #define APP_SLAVE_CS_Clear()             (LATKCLR = (1<<7))
 #define APP_SLAVE_CS_Toggle()            (LATKINV= (1<<7))
-#define APP_SLAVE_CS_Get()               ((PORTK >> 7) & 0x1)
 #define APP_SLAVE_CS_OutputEnable()      (TRISKCLR = (1<<7))
 #define APP_SLAVE_CS_InputEnable()       (TRISKSET = (1<<7))
+#define APP_SLAVE_CS_Get()               ((PORTK >> 7) & 0x1)
 #define APP_SLAVE_CS_PIN                  GPIO_PIN_RK7
+
 /*** Macros for LED_RED pin ***/
 #define LED_RED_Set()               (LATKSET = (1<<1))
 #define LED_RED_Clear()             (LATKCLR = (1<<1))
 #define LED_RED_Toggle()            (LATKINV= (1<<1))
-#define LED_RED_Get()               ((PORTK >> 1) & 0x1)
 #define LED_RED_OutputEnable()      (TRISKCLR = (1<<1))
 #define LED_RED_InputEnable()       (TRISKSET = (1<<1))
+#define LED_RED_Get()               ((PORTK >> 1) & 0x1)
 #define LED_RED_PIN                  GPIO_PIN_RK1
+
 /*** Macros for SWITCH pin ***/
 #define SWITCH_Set()               (LATASET = (1<<10))
 #define SWITCH_Clear()             (LATACLR = (1<<10))
 #define SWITCH_Toggle()            (LATAINV= (1<<10))
-#define SWITCH_Get()               ((PORTA >> 10) & 0x1)
 #define SWITCH_OutputEnable()      (TRISACLR = (1<<10))
 #define SWITCH_InputEnable()       (TRISASET = (1<<10))
+#define SWITCH_Get()               ((PORTA >> 10) & 0x1)
 #define SWITCH_PIN                  GPIO_PIN_RA10
+
 /*** Macros for APP_SLAVE_BUSY_PIN pin ***/
 #define APP_SLAVE_BUSY_PIN_Set()               (LATBSET = (1<<8))
 #define APP_SLAVE_BUSY_PIN_Clear()             (LATBCLR = (1<<8))
 #define APP_SLAVE_BUSY_PIN_Toggle()            (LATBINV= (1<<8))
-#define APP_SLAVE_BUSY_PIN_Get()               ((PORTB >> 8) & 0x1)
 #define APP_SLAVE_BUSY_PIN_OutputEnable()      (TRISBCLR = (1<<8))
 #define APP_SLAVE_BUSY_PIN_InputEnable()       (TRISBSET = (1<<8))
+#define APP_SLAVE_BUSY_PIN_Get()               ((PORTB >> 8) & 0x1)
 #define APP_SLAVE_BUSY_PIN_PIN                  GPIO_PIN_RB8
 
 
