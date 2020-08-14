@@ -13,8 +13,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/</LogicalPath>
           <PhysicalPath dnOrder="4">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">3477C6F788508451FADB8F17D7E78273</GeneratedChecksum>
-          <UserChecksum dnOrder="6">3477C6F788508451FADB8F17D7E78273</UserChecksum>
+          <GeneratedChecksum dnOrder="5">39FF52903D784BEF79D3640DC1072AFA</GeneratedChecksum>
+          <UserChecksum dnOrder="6">39FF52903D784BEF79D3640DC1072AFA</UserChecksum>
         </File>
         <File dnOrder="1">
           <Type dnOrder="0">SOURCE</Type>
@@ -22,8 +22,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/</LogicalPath>
           <PhysicalPath dnOrder="4">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">4741DCE1C0F727D054EDC6B628EAD034</GeneratedChecksum>
-          <UserChecksum dnOrder="6">4741DCE1C0F727D054EDC6B628EAD034</UserChecksum>
+          <GeneratedChecksum dnOrder="5">CA1E6A54112BCE3EE4235E13E8F81669</GeneratedChecksum>
+          <UserChecksum dnOrder="6">CA1E6A54112BCE3EE4235E13E8F81669</UserChecksum>
         </File>
         <File dnOrder="2">
           <Type dnOrder="0">SOURCE</Type>
@@ -31,8 +31,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/</LogicalPath>
           <PhysicalPath dnOrder="4">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">52571F34418EAD4BC92E0BEBF41A326D</GeneratedChecksum>
-          <UserChecksum dnOrder="6">52571F34418EAD4BC92E0BEBF41A326D</UserChecksum>
+          <GeneratedChecksum dnOrder="5">6472C6C26D24667C789468C50FA33346</GeneratedChecksum>
+          <UserChecksum dnOrder="6">6472C6C26D24667C789468C50FA33346</UserChecksum>
         </File>
         <File dnOrder="3">
           <Type dnOrder="0">SOURCE</Type>
@@ -49,8 +49,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/peripheral/clk/</LogicalPath>
           <PhysicalPath dnOrder="4">/peripheral/clk/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">3E9EFEB85E58A4A501FB0177E4064727</GeneratedChecksum>
-          <UserChecksum dnOrder="6">3E9EFEB85E58A4A501FB0177E4064727</UserChecksum>
+          <GeneratedChecksum dnOrder="5">2BDA9233EA7D63E7878863CA71EB7E39</GeneratedChecksum>
+          <UserChecksum dnOrder="6">2BDA9233EA7D63E7878863CA71EB7E39</UserChecksum>
         </File>
         <File dnOrder="5">
           <Type dnOrder="0">SOURCE</Type>
@@ -58,8 +58,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/peripheral/evic/</LogicalPath>
           <PhysicalPath dnOrder="4">/peripheral/evic/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">82C0AAA7B55DF3D5A54982FBA5F4FF8C</GeneratedChecksum>
-          <UserChecksum dnOrder="6">82C0AAA7B55DF3D5A54982FBA5F4FF8C</UserChecksum>
+          <GeneratedChecksum dnOrder="5">19DDA090C007DC96A1DBD07984E7394C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">19DDA090C007DC96A1DBD07984E7394C</UserChecksum>
         </File>
         <File dnOrder="6">
           <Type dnOrder="0">SOURCE</Type>
@@ -67,8 +67,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/peripheral/gpio/</LogicalPath>
           <PhysicalPath dnOrder="4">/peripheral/gpio/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">47DE8BC101CFB065BAEC21B26D2A0DED</GeneratedChecksum>
-          <UserChecksum dnOrder="6">47DE8BC101CFB065BAEC21B26D2A0DED</UserChecksum>
+          <GeneratedChecksum dnOrder="5">90D14B6CCD1A38263C25E5ED078A5176</GeneratedChecksum>
+          <UserChecksum dnOrder="6">90D14B6CCD1A38263C25E5ED078A5176</UserChecksum>
         </File>
         <File dnOrder="7">
           <Type dnOrder="0">SOURCE</Type>
@@ -103,8 +103,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/peripheral/uart/</LogicalPath>
           <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">872E31477DF840C64BFF6FA91A1405BA</GeneratedChecksum>
-          <UserChecksum dnOrder="6">872E31477DF840C64BFF6FA91A1405BA</UserChecksum>
+          <GeneratedChecksum dnOrder="5">1EA7706580633FE09CCF56198A58276A</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1EA7706580633FE09CCF56198A58276A</UserChecksum>
         </File>
         <File dnOrder="11">
           <Type dnOrder="0">SOURCE</Type>
@@ -112,8 +112,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity</LogicalPath>
           <PhysicalPath dnOrder="4">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">476C46B914ECEA295F8CBA87471805EE</GeneratedChecksum>
-          <UserChecksum dnOrder="6">476C46B914ECEA295F8CBA87471805EE</UserChecksum>
+          <GeneratedChecksum dnOrder="5">7588A8092B2438C18E2F98288A07B7C2</GeneratedChecksum>
+          <UserChecksum dnOrder="6">7588A8092B2438C18E2F98288A07B7C2</UserChecksum>
         </File>
         <File dnOrder="12">
           <Type dnOrder="0">SOURCE</Type>
@@ -121,8 +121,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/stdio/</LogicalPath>
           <PhysicalPath dnOrder="4">/stdio/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">923E166039182547822536280173B727</GeneratedChecksum>
-          <UserChecksum dnOrder="6">923E166039182547822536280173B727</UserChecksum>
+          <GeneratedChecksum dnOrder="5">684C1B450BD0C0ADF455296291954A10</GeneratedChecksum>
+          <UserChecksum dnOrder="6">684C1B450BD0C0ADF455296291954A10</UserChecksum>
         </File>
         <File dnOrder="13">
           <Type dnOrder="0">HEADER</Type>
@@ -137,8 +137,8 @@
           <Type dnOrder="0">HEADER</Type>
           <Name dnOrder="1">device.h</Name>
           <Security dnOrder="2">NON_SECURE</Security>
-          <LogicalPath dnOrder="3">packs/PIC32MZ1025W104132_DFP/</LogicalPath>
-          <PhysicalPath dnOrder="4">/../../packs/PIC32MZ1025W104132_DFP/</PhysicalPath>
+          <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
           <GeneratedChecksum dnOrder="5">5D5C52527AB1435153DB9B50ADE6B79D</GeneratedChecksum>
           <UserChecksum dnOrder="6">5D5C52527AB1435153DB9B50ADE6B79D</UserChecksum>
         </File>
@@ -166,8 +166,8 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/peripheral/gpio/</LogicalPath>
           <PhysicalPath dnOrder="4">/peripheral/gpio/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">6AB711960D7097EF97AF7A7DA340BFFA</GeneratedChecksum>
-          <UserChecksum dnOrder="6">6AB711960D7097EF97AF7A7DA340BFFA</UserChecksum>
+          <GeneratedChecksum dnOrder="5">3C52CEA231878411E3950ADD556AF20C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">3C52CEA231878411E3950ADD556AF20C</UserChecksum>
         </File>
         <File dnOrder="18">
           <Type dnOrder="0">HEADER</Type>
@@ -247,15 +247,18 @@
           <Security dnOrder="2">NON_SECURE</Security>
           <LogicalPath dnOrder="3">config/pic32mz_w1_curiosity/</LogicalPath>
           <PhysicalPath dnOrder="4">/</PhysicalPath>
-          <GeneratedChecksum dnOrder="5">9D344CAF1743381AA0EA1641ABCDE373</GeneratedChecksum>
-          <UserChecksum dnOrder="6">9D344CAF1743381AA0EA1641ABCDE373</UserChecksum>
+          <GeneratedChecksum dnOrder="5">FA212DEAE39D4E86EF4E6CB440610FE9</GeneratedChecksum>
+          <UserChecksum dnOrder="6">FA212DEAE39D4E86EF4E6CB440610FE9</UserChecksum>
         </File>
       </Files>
       <Settings dnOrder="1">
         <Setting append="true" category="C32" delimiter=";" dnOrder="0" key="extra-include-directories" security="NON_SECURE" value="../src;../src/config/pic32mz_w1_curiosity;../src/packs/PIC32MZ1025W104132_DFP;"/>
-        <Setting category="C32-LD" dnOrder="1" key="heap-size" security="NON_SECURE" value="512"/>
-        <Setting category="C32-LD" dnOrder="2" key="no-device-startup-code" security="NON_SECURE" value="true"/>
-        <Setting append="true" category="C32-LD" delimiter=";" dnOrder="3" key="preprocessor-macros" security="NON_SECURE" value=""/>
+        <Setting category="C32" dnOrder="1" key="generate-micro-compressed-code" security="NON_SECURE" value="false"/>
+        <Setting category="C32-LD" dnOrder="2" key="heap-size" security="NON_SECURE" value="512"/>
+        <Setting category="C32-LD" dnOrder="3" key="no-device-startup-code" security="NON_SECURE" value="true"/>
+        <Setting append="true" category="C32-LD" delimiter=";=" dnOrder="4" key="preprocessor-macros" security="NON_SECURE" value=""/>
+        <Setting append="true" category="C32CPP" delimiter=";" dnOrder="5" key="extra-include-directories" security="NON_SECURE" value="../src;../src/config/pic32mz_w1_curiosity;../src/packs/PIC32MZ1025W104132_DFP;"/>
+        <Setting category="C32CPP" dnOrder="6" key="generate-micro-compressed-code" security="NON_SECURE" value="false"/>
       </Settings>
     </Manifest>
     <Settings dnOrder="5">
