@@ -61,23 +61,25 @@
 // *****************************************************************************
 // *****************************************************************************
 
+
 /*** Macros for GPIO_RK7 pin ***/
 #define GPIO_RK7_Set()               (LATKSET = (1<<7))
 #define GPIO_RK7_Clear()             (LATKCLR = (1<<7))
 #define GPIO_RK7_Toggle()            (LATKINV= (1<<7))
-#define GPIO_RK7_Get()               ((PORTK >> 7) & 0x1)
 #define GPIO_RK7_OutputEnable()      (TRISKCLR = (1<<7))
 #define GPIO_RK7_InputEnable()       (TRISKSET = (1<<7))
+#define GPIO_RK7_Get()               ((PORTK >> 7) & 0x1)
+#define GPIO_RK7_PIN                  GPIO_PIN_RK7
 #define GPIO_RK7_InterruptEnable()   (CNENKSET = (1<<7))
 #define GPIO_RK7_InterruptDisable()  (CNENKCLR = (1<<7))
-#define GPIO_RK7_PIN                  GPIO_PIN_RK7
+
 /*** Macros for GPIO_RB8 pin ***/
 #define GPIO_RB8_Set()               (LATBSET = (1<<8))
 #define GPIO_RB8_Clear()             (LATBCLR = (1<<8))
 #define GPIO_RB8_Toggle()            (LATBINV= (1<<8))
-#define GPIO_RB8_Get()               ((PORTB >> 8) & 0x1)
 #define GPIO_RB8_OutputEnable()      (TRISBCLR = (1<<8))
 #define GPIO_RB8_InputEnable()       (TRISBSET = (1<<8))
+#define GPIO_RB8_Get()               ((PORTB >> 8) & 0x1)
 #define GPIO_RB8_PIN                  GPIO_PIN_RB8
 
 

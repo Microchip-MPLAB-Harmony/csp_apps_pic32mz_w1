@@ -17,7 +17,7 @@
 *******************************************************************************/
 
 /*******************************************************************************
-* Copyright (C) 2018-2019 Microchip Technology Inc. and its subsidiaries.
+* Copyright (C) 2019-2020 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -46,8 +46,8 @@
 // Section: SPI2 Slave Implementation
 // *****************************************************************************
 // *****************************************************************************
-#define SPI2_BUSY_PIN					 GPIO_PIN_RB8
-#define SPI2_CS_PIN						 GPIO_PIN_RK7
+#define SPI2_BUSY_PIN                    GPIO_PIN_RB8
+#define SPI2_CS_PIN                      GPIO_PIN_RK7
 
 
 #define SPI2_READ_BUFFER_SIZE            256
@@ -66,16 +66,16 @@ SPI_SLAVE_OBJECT spi2Obj;
 #define SPI2_CON_ENHBUF                     (1 << _SPI2CON_ENHBUF_POSITION)
 #define SPI2_CON_STXISEL                    (3 << _SPI2CON_STXISEL_POSITION)
 #define SPI2_CON_SRXISEL                    (1 << _SPI2CON_SRXISEL_POSITION)
-                             
-#define SPI2_ENABLE_RX_INT() 				IEC1SET = 0x400000
-#define SPI2_CLEAR_RX_INT_FLAG()			IFS1CLR = 0x400000
 
-#define SPI2_DISABLE_TX_INT()				IEC1CLR = 0x800000                
-#define SPI2_ENABLE_TX_INT() 				IEC1SET = 0x800000
-#define SPI2_CLEAR_TX_INT_FLAG()			IFS1CLR = 0x800000
+#define SPI2_ENABLE_RX_INT()                IEC1SET = 0x400000
+#define SPI2_CLEAR_RX_INT_FLAG()            IFS1CLR = 0x400000
 
-#define SPI2_ENABLE_ERR_INT() 				IEC1SET = 0x200000
-#define SPI2_CLEAR_ERR_INT_FLAG()			IEC1CLR = 0x200000
+#define SPI2_DISABLE_TX_INT()               IEC1CLR = 0x800000
+#define SPI2_ENABLE_TX_INT()                IEC1SET = 0x800000
+#define SPI2_CLEAR_TX_INT_FLAG()            IFS1CLR = 0x800000
+
+#define SPI2_ENABLE_ERR_INT()               IEC1SET = 0x200000
+#define SPI2_CLEAR_ERR_INT_FLAG()           IEC1CLR = 0x200000
 
 /* Forward declarations */
 static void SPI2_CS_Handler(GPIO_PIN pin, uintptr_t context);
@@ -88,51 +88,51 @@ void SPI2_Initialize ( void )
     IEC1CLR = 0x800000;
 
     /* STOP and Reset the SPI */
-    SPI2CON = 0;    
+    SPI2CON = 0;
 
     /* Clear SPI2 Interrupt flags */
     IFS1CLR = 0x200000;
     IFS1CLR = 0x400000;
     IFS1CLR = 0x800000;
-    
+
     /* CLear the receiver overflow error flag */
     SPI2STATCLR = _SPI2STAT_SPIROV_MASK;
 
-    /*	
-	SRXISEL = 1 (Receive buffer is not empty)
-	STXISEL = 3 (Transmit buffer is not full)
+    /*
+    SRXISEL = 1 (Receive buffer is not empty)
+    STXISEL = 3 (Transmit buffer is not full)
     MSTEN = 0
     CKP = 0
     CKE = 1
     MODE<32,16> = 0
-    ENHBUF = 1    
+    ENHBUF = 1
     */
-	
-    SPI2CONSET = (SPI2_CON_ENHBUF | SPI2_CON_MODE_32_MODE_16 | SPI2_CON_CKE | SPI2_CON_CKP | SPI2_CON_STXISEL | SPI2_CON_SRXISEL);   
-	
-	/* Enable generation of interrupt on receiver overflow */
-	SPI2CON2SET = _SPI2CON2_SPIROVEN_MASK;
 
-	spi2Obj.rdInIndex = 0;
+    SPI2CONSET = (SPI2_CON_ENHBUF | SPI2_CON_MODE_32_MODE_16 | SPI2_CON_CKE | SPI2_CON_CKP | SPI2_CON_STXISEL | SPI2_CON_SRXISEL);
+
+    /* Enable generation of interrupt on receiver overflow */
+    SPI2CON2SET = _SPI2CON2_SPIROVEN_MASK;
+
+    spi2Obj.rdInIndex = 0;
     spi2Obj.wrOutIndex = 0;
     spi2Obj.nWrBytes = 0;
     spi2Obj.errorStatus = SPI_SLAVE_ERROR_NONE;
     spi2Obj.callback = NULL ;
-    spi2Obj.transferIsBusy = false ;	
-	spi2Obj.csInterruptPending = false;
-	spi2Obj.rxInterruptActive = false;
-	
+    spi2Obj.transferIsBusy = false ;
+    spi2Obj.csInterruptPending = false;
+    spi2Obj.rxInterruptActive = false;
+
     /* Set the Busy Pin to ready state */
     GPIO_PinWrite((GPIO_PIN)SPI2_BUSY_PIN, 0);
-	
-	/* Register callback and enable notifications on Chip Select logic level change */
-	GPIO_PinInterruptCallbackRegister(SPI2_CS_PIN, SPI2_CS_Handler, (uintptr_t)NULL);
+
+    /* Register callback and enable notifications on Chip Select logic level change */
+    GPIO_PinInterruptCallbackRegister(SPI2_CS_PIN, SPI2_CS_Handler, (uintptr_t)NULL);
     GPIO_PinInterruptEnable(SPI2_CS_PIN);
-	
-	/* Enable SPI2 RX and Error Interrupts. TX interrupt will be enabled when a SPI write is submitted. */
+
+    /* Enable SPI2 RX and Error Interrupts. TX interrupt will be enabled when a SPI write is submitted. */
     SPI2_ENABLE_RX_INT();
-	SPI2_ENABLE_ERR_INT();
-    
+    SPI2_ENABLE_ERR_INT();
+
     /* Enable SPI2 */
     SPI2CONSET = _SPI2CON_ON_MASK;
 }
@@ -141,21 +141,21 @@ void SPI2_Initialize ( void )
 size_t SPI2_Read(void* pRdBuffer, size_t size)
 {
     size_t rdSize = size;
-	uint32_t rdInIndex = spi2Obj.rdInIndex;    
+    uint32_t rdInIndex = spi2Obj.rdInIndex;
 
     if (rdSize > rdInIndex)
     {
         rdSize = rdInIndex;
     }
 
-    memcpy(pRdBuffer, SPI2_ReadBuffer, rdSize);    
+    memcpy(pRdBuffer, SPI2_ReadBuffer, rdSize);
 
     return rdSize;
 }
 
 /* For 16-bit/32-bit mode, the "size" must be specified in terms of 16-bit/32-bit words */
 size_t SPI2_Write(void* pWrBuffer, size_t size )
-{    
+{
     size_t wrSize = size;
 
     SPI2_DISABLE_TX_INT();
@@ -168,9 +168,9 @@ size_t SPI2_Write(void* pWrBuffer, size_t size )
     memcpy(SPI2_WriteBuffer, pWrBuffer, wrSize);
 
     spi2Obj.nWrBytes = wrSize;
-    spi2Obj.wrOutIndex = 0;	
+    spi2Obj.wrOutIndex = 0;
 
-	/* Fill up the FIFO as long as there are empty elements */
+    /* Fill up the FIFO as long as there are empty elements */
     while ((!(SPI2STAT & _SPI2STAT_SPITBF_MASK)) && (spi2Obj.wrOutIndex < spi2Obj.nWrBytes))
     {
         SPI2BUF = SPI2_WriteBuffer[spi2Obj.wrOutIndex++];
@@ -230,82 +230,82 @@ SPI_SLAVE_ERROR SPI2_ErrorGet(void)
 
 static void SPI2_CS_Handler(GPIO_PIN pin, uintptr_t context)
 {
-	bool activeState = 0;
-	
+    bool activeState = 0;
+
     if (GPIO_PinRead((GPIO_PIN)SPI2_CS_PIN) == activeState)
-	{
-		/* CS is asserted */
-		spi2Obj.transferIsBusy = true;
-		
-		/* Drive busy line to active state */
+    {
+        /* CS is asserted */
+        spi2Obj.transferIsBusy = true;
+
+        /* Drive busy line to active state */
         GPIO_PinWrite((GPIO_PIN)SPI2_BUSY_PIN, 1);
-	}
-	else
-	{
-		/* Give application callback only if RX interrupt is not preempted and RX interrupt is not pending to be serviced */
-		
-		if ((spi2Obj.rxInterruptActive == false) && ((IFS1 & _IFS1_SPI2RXIF_MASK) == 0))
-		{
-			/* CS is de-asserted */
-			spi2Obj.transferIsBusy = false;
+    }
+    else
+    {
+        /* Give application callback only if RX interrupt is not preempted and RX interrupt is not pending to be serviced */
 
-			spi2Obj.wrOutIndex = 0;
-			spi2Obj.nWrBytes = 0;
+        if ((spi2Obj.rxInterruptActive == false) && ((IFS1 & _IFS1_SPI2RXIF_MASK) == 0))
+        {
+            /* CS is de-asserted */
+            spi2Obj.transferIsBusy = false;
 
-			if(spi2Obj.callback != NULL)
-			{
-				spi2Obj.callback(spi2Obj.context);
-			}
-			
-			/* Clear the read index. Application must read out the data by calling SPI2_Read API in the callback */
-			spi2Obj.rdInIndex = 0;
-		}
-		else
-		{
-			/* If CS interrupt is serviced by either preempting the RX interrupt or RX interrupt is pending to be serviced, 
-			 * then delegate the responsibility of giving application callback to the RX interrupt handler */
-			 
-			spi2Obj.csInterruptPending = true;
-		}
-	}
+            spi2Obj.wrOutIndex = 0;
+            spi2Obj.nWrBytes = 0;
+
+            if(spi2Obj.callback != NULL)
+            {
+                spi2Obj.callback(spi2Obj.context);
+            }
+
+            /* Clear the read index. Application must read out the data by calling SPI2_Read API in the callback */
+            spi2Obj.rdInIndex = 0;
+        }
+        else
+        {
+            /* If CS interrupt is serviced by either preempting the RX interrupt or RX interrupt is pending to be serviced,
+             * then delegate the responsibility of giving application callback to the RX interrupt handler */
+
+            spi2Obj.csInterruptPending = true;
+        }
+    }
 }
 
 void SPI2_ERR_InterruptHandler (void)
 {
-	spi2Obj.errorStatus = (SPI2STAT & _SPI2STAT_SPIROV_MASK);
-	
-	/* Clear the receive overflow flag */
-	SPI2STATCLR = _SPI2STAT_SPIROV_MASK;
-		
-	SPI2_CLEAR_ERR_INT_FLAG();
+    spi2Obj.errorStatus = (SPI2STAT & _SPI2STAT_SPIROV_MASK);
+
+    /* Clear the receive overflow flag */
+    SPI2STATCLR = _SPI2STAT_SPIROV_MASK;
+
+    SPI2_CLEAR_ERR_INT_FLAG();
 }
 
 void SPI2_TX_InterruptHandler (void)
 {
-	/* Fill up the FIFO as long as there are empty elements */
-	while ((!(SPI2STAT & _SPI2STAT_SPITBF_MASK)) && (spi2Obj.wrOutIndex < spi2Obj.nWrBytes))
-	{
-		SPI2BUF = SPI2_WriteBuffer[spi2Obj.wrOutIndex++];
-	}
-	
-	/* Clear the transmit interrupt flag */
+    /* Fill up the FIFO as long as there are empty elements */
+    while ((!(SPI2STAT & _SPI2STAT_SPITBF_MASK)) && (spi2Obj.wrOutIndex < spi2Obj.nWrBytes))
+    {
+        SPI2BUF = SPI2_WriteBuffer[spi2Obj.wrOutIndex++];
+    }
+
+    /* Clear the transmit interrupt flag */
     SPI2_CLEAR_TX_INT_FLAG();
-		
-	if (spi2Obj.wrOutIndex == spi2Obj.nWrBytes)
-	{
-		/* Nothing to transmit. Disable transmit interrupt. The last byte sent by the master will be shifted out automatically*/
-		SPI2_DISABLE_TX_INT();
-	}			       
+
+    if (spi2Obj.wrOutIndex == spi2Obj.nWrBytes)
+    {
+        /* Nothing to transmit. Disable transmit interrupt. The last byte sent by the master will be shifted out automatically*/
+        SPI2_DISABLE_TX_INT();
+    }
 }
 
 void SPI2_RX_InterruptHandler (void)
 {
-	uint32_t receivedData = 0;
-	
-	spi2Obj.rxInterruptActive = true;
-				
-	while (!(SPI2STAT & _SPI2STAT_SPIRBE_MASK))
-    {        
+    uint32_t receivedData = 0;
+
+    spi2Obj.rxInterruptActive = true;
+
+    while (!(SPI2STAT & _SPI2STAT_SPIRBE_MASK))
+    {
         /* Receive buffer is not empty. Read the received data. */
         receivedData = SPI2BUF;
 
@@ -314,19 +314,19 @@ void SPI2_RX_InterruptHandler (void)
             SPI2_ReadBuffer[spi2Obj.rdInIndex++] = receivedData;
         }
     }
-	    
+
     /* Clear the receive interrupt flag */
     SPI2_CLEAR_RX_INT_FLAG();
-	
-	spi2Obj.rxInterruptActive = false;
-	
-	/* Check if CS interrupt occured before the RX interrupt and that CS interrupt delegated the responsibility to give 
-	 * application callback to the RX interrupt */
-	 
-	if (spi2Obj.csInterruptPending == true)
-	{	
-		spi2Obj.csInterruptPending = false;		
-		spi2Obj.transferIsBusy = false;
+
+    spi2Obj.rxInterruptActive = false;
+
+    /* Check if CS interrupt occured before the RX interrupt and that CS interrupt delegated the responsibility to give
+     * application callback to the RX interrupt */
+
+    if (spi2Obj.csInterruptPending == true)
+    {
+        spi2Obj.csInterruptPending = false;
+        spi2Obj.transferIsBusy = false;
 
         spi2Obj.wrOutIndex = 0;
         spi2Obj.nWrBytes = 0;
@@ -335,9 +335,9 @@ void SPI2_RX_InterruptHandler (void)
         {
             spi2Obj.callback(spi2Obj.context);
         }
-		
-		/* Clear the read index. Application must read out the data by calling SPI2_Read API in the callback */
-		spi2Obj.rdInIndex = 0;
-	}
+
+        /* Clear the read index. Application must read out the data by calling SPI2_Read API in the callback */
+        spi2Obj.rdInIndex = 0;
+    }
 }
 
