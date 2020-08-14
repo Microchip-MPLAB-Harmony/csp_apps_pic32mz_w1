@@ -82,10 +82,8 @@ void GPIO_Initialize ( void )
     RPA14R = 5;
 
     /* Lock back the system after PPS configuration */
-    SYSKEY = 0x00000000;
-    SYSKEY = 0xAA996655;
-    SYSKEY = 0x556699AA;
     CFGCON0bits.IOLOCK = 1;
+    SYSKEY = 0x00000000;
 
 }
 

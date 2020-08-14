@@ -55,5 +55,5 @@ The following table shows the target hardware for the application projects.
     | ---------- | ------------------ |
     |OC1 output | RB12 (Pin 7 of XPRO header) |
     |OC2 output | RK1 (Red LED) |
-    |OC3 output | RB14 (Pin 4 of XPRO header) |
+    |OC3 output | RA14 (Pin 4 of XPRO header) |
     |||
