@@ -43,12 +43,15 @@ The following applications are provided to demonstrate the typical or interestin
 | [DMT timeout](apps/dmt/dmt_timeout/readme.md) | This example application shows how the deadman timer resets by not clearing the deadman timer counter on switch press |
 | [GPIO interrupt](apps/gpio/gpio_led_on_off_interrupt/readme.md) | This example application demonstrate how to generate GPIO interrupt on switch press and release, and indicate the switch status using the LED |
 | [I2C EEPROM read write](apps/i2c/master/i2c_eeprom/readme.md) | This example application demonstrates how to use the I2C peripheral to write and read from the I2C serial EEPROM memory |
+| [I2C EEPROM emulation](apps/i2c/slave/i2c_eeprom_emulation/readme.md) | This example application demonstrates how to use the I2C peripheral in slave mode |
 | [ICAP capture mode](apps/icap/icap_capture_mode/readme.md) | This example application shows how to use the ICAP peripheral to measure the pulse width of the input signal |
 | [NVM flash read write](apps/nvm/flash_read_write/readme.md) | This example application demonstrates how to use the NVM to erase and program the internal Flash memory |
 | [OCMP compare mode](apps/ocmp/ocmp_compare_mode/readme.md) | This example application shows how to use the OCMP peripheral to generate an active low, active high, and toggle output on compare match |
 | [RNG random number](apps/rng/rng_random_number/readme.md) | This example application shows how to use the RNG Peripheral library to generate a pseudo-random number |
 | [RTCC alarm interrupt](apps/rtcc/rtcc_alarm/readme.md) | This example application shows how to use the RTCC to configure the time and generate the alarm |
 | [SPI SST26 flash write read](apps/spi/master/spi_sst26_write_read/readme.md) | This example uses the SPI peripheral library to write an array of values to the SST26 Flash and verify the value written by reading the values back and comparing it to the value written. The example application performs the SST26 write only once after a power on reset |
+| [SPI write read test app](apps/spi/master/spi_write_read_test_app/readme.md) | This is a SPI Master test application which is provided to demonstrate communication between SPI master and the corresponding SPI slave application available under - apps/spi/slave/spi_write_read/firmware |
+| [SPI slave write read](apps/spi/slave/spi_write_read/readme.md) | This example application demonstrates how to use the SPI peripheral in slave mode |
 | [TMR periodic interrupt](apps/tmr/tmr_timer_mode/readme.md) | This example demonstrates how to use the TMR module in timer mode to generate periodic interrupt |
 | [TMR1 periodic interrupt](apps/tmr1/tmr1_timer_mode/readme.md) | This example demonstrates how to use the TMR1 module in timer mode to generate periodic interrupt |
 | [UART echo interrupt](apps/uart/uart_echo_interrupt/readme.md) | This example application demonstrates how to use the UART peripheral to transfer a block of data in a non-blocking manner |
