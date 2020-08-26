@@ -1,3 +1,10 @@
+---
+parent: Harmony 3 peripheral library application examples for PIC32MZ W1 family
+title: SPI SST26 flash write read 
+has_children: false
+has_toc: false
+---
+
 [![MCHP](https://www.microchip.com/ResourcePackages/Microchip/assets/dist/images/logo.png)](https://www.microchip.com)
 
 # SPI SST26 flash write read
