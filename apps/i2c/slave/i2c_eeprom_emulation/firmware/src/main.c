@@ -115,7 +115,7 @@ void delay(uint32_t count)
     }    
 }
 
-bool APP_SERCOM_I2C_Callback ( I2C_SLAVE_TRANSFER_EVENT event, uintptr_t contextHandle )
+bool APP_I2C_SLAVE_Callback ( I2C_SLAVE_TRANSFER_EVENT event, uintptr_t contextHandle )
 {
     bool isSendACK = true;
 
@@ -237,7 +237,7 @@ int main ( void )
     
     eepromData.eepromCommand = EEPROM_CMD_IDLE;
 
-    I2C1_CallbackRegister(APP_SERCOM_I2C_Callback, 0);
+    I2C1_CallbackRegister(APP_I2C_SLAVE_Callback, 0);
 
     while ( true )
     {
