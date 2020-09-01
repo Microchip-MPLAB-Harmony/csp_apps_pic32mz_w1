@@ -27,9 +27,8 @@ The SPI slave responds by sending the data at the requested memory address. The 
 
 ## Downloading and building the application
 
-To download or clone this application from Github, go to the [top level of the repository](https://github.com/Microchip-MPLAB-Harmony/csp_apps_pic32mz_w1) and click
-
-![clone](../../../docs/images/clone.png)
+To clone or download this application from Github, go to the [main page of this repository](https://github.com/Microchip-MPLAB-Harmony/csp_apps_pic32mz_w1) and then click **Clone** button to clone this repository or download as zip file.
+This content can also be downloaded using content manager by following these [instructions](https://github.com/Microchip-MPLAB-Harmony/contentmanager/wiki).
 
 Path of the application within the repository is **apps/spi/slave/spi_write_read/firmware** .
 
@@ -62,7 +61,7 @@ The following table shows the target hardware for the application projects.
 
 ## Running the Application
 
-1. Build and Program the SPI master application project using its IDE. Path of the SPI master application within the repository is apps\spi\master\spi_write_read_test_app.
+1. Build and Program the SPI master application project using its IDE. Path of the SPI master application within the repository is **apps/spi/master/spi_write_read_test_app**.
 2. Build and Program the SPI slave application project using its IDE
 3. On the SPI master board, press switch to start reading and writing data
 2. LED on SPI master board indicates the success or failure:
