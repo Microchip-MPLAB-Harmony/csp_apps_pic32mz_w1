@@ -49,7 +49,9 @@
 // *****************************************************************************
 // *****************************************************************************
 
+#include "interrupts.h"
 #include "definitions.h"
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -59,6 +61,7 @@
 
 
 void CHANGE_NOTICE_K_InterruptHandler( void );
+void SPI2_FAULT_InterruptHandler( void );
 void SPI2_RX_InterruptHandler( void );
 void SPI2_TX_InterruptHandler( void );
 
@@ -68,6 +71,11 @@ void SPI2_TX_InterruptHandler( void );
 void __ISR(_CHANGE_NOTICE_K_VECTOR, ipl1SRS) CHANGE_NOTICE_K_Handler (void)
 {
     CHANGE_NOTICE_K_InterruptHandler();
+}
+
+void __ISR(_SPI2_FAULT_VECTOR, ipl1SRS) SPI2_FAULT_Handler (void)
+{
+    SPI2_FAULT_InterruptHandler();
 }
 
 void __ISR(_SPI2_RX_VECTOR, ipl1SRS) SPI2_RX_Handler (void)

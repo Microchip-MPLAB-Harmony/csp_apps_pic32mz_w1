@@ -66,6 +66,7 @@ SPI_SLAVE_OBJECT spi2Obj;
 #define SPI2_CON_ENHBUF                     (1 << _SPI2CON_ENHBUF_POSITION)
 #define SPI2_CON_STXISEL                    (3 << _SPI2CON_STXISEL_POSITION)
 #define SPI2_CON_SRXISEL                    (1 << _SPI2CON_SRXISEL_POSITION)
+#define SPI2_CON_SSEN                       (1 << _SPI2CON_SSEN_POSITION)
 
 #define SPI2_ENABLE_RX_INT()                IEC1SET = 0x400000
 #define SPI2_CLEAR_RX_INT_FLAG()            IFS1CLR = 0x400000
@@ -75,7 +76,7 @@ SPI_SLAVE_OBJECT spi2Obj;
 #define SPI2_CLEAR_TX_INT_FLAG()            IFS1CLR = 0x800000
 
 #define SPI2_ENABLE_ERR_INT()               IEC1SET = 0x200000
-#define SPI2_CLEAR_ERR_INT_FLAG()           IEC1CLR = 0x200000
+#define SPI2_CLEAR_ERR_INT_FLAG()           IFS1CLR = 0x200000
 
 /* Forward declarations */
 static void SPI2_CS_Handler(GPIO_PIN pin, uintptr_t context);
@@ -108,7 +109,7 @@ void SPI2_Initialize ( void )
     ENHBUF = 1
     */
 
-    SPI2CONSET = (SPI2_CON_ENHBUF | SPI2_CON_MODE_32_MODE_16 | SPI2_CON_CKE | SPI2_CON_CKP | SPI2_CON_STXISEL | SPI2_CON_SRXISEL);
+    SPI2CONSET = (SPI2_CON_ENHBUF | SPI2_CON_MODE_32_MODE_16 | SPI2_CON_CKE | SPI2_CON_CKP | SPI2_CON_SSEN | SPI2_CON_STXISEL | SPI2_CON_SRXISEL);
 
     /* Enable generation of interrupt on receiver overflow */
     SPI2CON2SET = _SPI2CON2_SPIROVEN_MASK;
@@ -270,7 +271,7 @@ static void SPI2_CS_Handler(GPIO_PIN pin, uintptr_t context)
     }
 }
 
-void SPI2_ERR_InterruptHandler (void)
+void SPI2_FAULT_InterruptHandler (void)
 {
     spi2Obj.errorStatus = (SPI2STAT & _SPI2STAT_SPIROV_MASK);
 
