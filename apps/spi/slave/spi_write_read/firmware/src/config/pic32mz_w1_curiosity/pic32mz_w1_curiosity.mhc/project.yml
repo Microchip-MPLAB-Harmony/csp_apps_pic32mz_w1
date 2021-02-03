@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: D24B44B453CF8AC385F8D76582F36C3E
+- generatedChecksum: BE986BCC0460741BEB2328CCB7889EDA
   logicalPath: config\pic32mz_w1_curiosity\peripheral\clk
   name: plib_clk.c
   physicalPath: peripheral\clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: D24B44B453CF8AC385F8D76582F36C3E
+  userChecksum: BE986BCC0460741BEB2328CCB7889EDA
 - generatedChecksum: D65E5C52446646D53BF3B80E1D502E4E
   logicalPath: config\pic32mz_w1_curiosity\peripheral\evic
   name: plib_evic.c
@@ -132,13 +132,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: FA212DEAE39D4E86EF4E6CB440610FE9
-- generatedChecksum: 34C817709D3F54FE0AD5A90F33B4CB7C
+- generatedChecksum: 79557AEFF1105797385F9C4EE40A5C4F
   logicalPath: config\pic32mz_w1_curiosity
   name: p32MZ1025W104132.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 34C817709D3F54FE0AD5A90F33B4CB7C
+  userChecksum: 79557AEFF1105797385F9C4EE40A5C4F
 format_version: v1.0
 libraries: []
 settings:
