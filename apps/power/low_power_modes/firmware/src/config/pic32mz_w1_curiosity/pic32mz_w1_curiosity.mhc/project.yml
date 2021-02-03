@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 138389A9322EDE8B49EFB5824BEB5A84
+- generatedChecksum: 700BA53EE0D3D0EE9F6DAE0D2FC10B48
   logicalPath: config\pic32mz_w1_curiosity\peripheral\clk
   name: plib_clk.c
   physicalPath: peripheral\clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 138389A9322EDE8B49EFB5824BEB5A84
+  userChecksum: 700BA53EE0D3D0EE9F6DAE0D2FC10B48
 - generatedChecksum: 500F99901F5806EE4C915CF2DD523BE7
   logicalPath: config\pic32mz_w1_curiosity\peripheral\evic
   name: plib_evic.c
