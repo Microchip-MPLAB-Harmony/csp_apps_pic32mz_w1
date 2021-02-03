@@ -7,16 +7,16 @@
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="pic32mz_w1_curiosity" projectFiles="true">
           <logicalFolder name="f1" displayName="peripheral" projectFiles="true">
-            <logicalFolder name="f2" displayName="clk" projectFiles="true">
+            <logicalFolder name="f1" displayName="clk" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/clk/plib_clk.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f4" displayName="evic" projectFiles="true">
+            <logicalFolder name="f2" displayName="evic" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/evic/plib_evic.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="gpio" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/gpio/plib_gpio.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="tmr" projectFiles="true">
+            <logicalFolder name="f4" displayName="tmr" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/tmr/plib_tmr_common.h</itemPath>
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/tmr/plib_tmr2.h</itemPath>
             </logicalFolder>
@@ -24,19 +24,35 @@
           <itemPath>../src/config/pic32mz_w1_curiosity/toolchain_specifics.h</itemPath>
           <itemPath>../src/config/pic32mz_w1_curiosity/definitions.h</itemPath>
           <itemPath>../src/config/pic32mz_w1_curiosity/device.h</itemPath>
+          <itemPath>../src/config/pic32mz_w1_curiosity/interrupts.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="true">
+      <logicalFolder name="f1"
+                     displayName="pic32mz_w1_curiosity.mhc"
+                     projectFiles="true">
+        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/core.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/project.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/tmr2.yml</itemPath>
+        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/tmr3.yml</itemPath>
+      </logicalFolder>
       <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/pic32mz_w1_curiosity/harmony.prj</itemPath>
-      <itemPath>../../../../../../mhc/../csp_apps_pic32mz_w1/apps/tmr/tmr_timer_mode/firmware/src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.xml</itemPath>
+      <itemPath>../src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="config" projectFiles="true">
+        <logicalFolder name="f1" displayName="pic32mz_w1_curiosity" projectFiles="true">
+          <itemPath>../src/config/pic32mz_w1_curiosity/p32MZ1025W104132.ld</itemPath>
+        </logicalFolder>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -44,16 +60,16 @@
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="pic32mz_w1_curiosity" projectFiles="true">
           <logicalFolder name="f1" displayName="peripheral" projectFiles="true">
-            <logicalFolder name="f2" displayName="clk" projectFiles="true">
+            <logicalFolder name="f1" displayName="clk" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/clk/plib_clk.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f4" displayName="evic" projectFiles="true">
+            <logicalFolder name="f2" displayName="evic" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/evic/plib_evic.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="gpio" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/gpio/plib_gpio.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="tmr" projectFiles="true">
+            <logicalFolder name="f4" displayName="tmr" projectFiles="true">
               <itemPath>../src/config/pic32mz_w1_curiosity/peripheral/tmr/plib_tmr2.c</itemPath>
             </logicalFolder>
           </logicalFolder>
@@ -82,11 +98,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.41</languageToolchainVersion>
+        <languageToolchainVersion>2.50</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.2.153"/>
+        <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.3.177"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -107,6 +123,7 @@
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep></makeCustomizationPostStep>
@@ -123,7 +140,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/pic32mz_w1_curiosity;../src/packs/PIC32MZ1025W104132_DFP"/>
+                  value="../src;../src/config/pic32mz_w1_curiosity;../src/packs/PIC32MZ1025W104132_DFP;"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -220,7 +237,7 @@
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/pic32mz_w1_curiosity;../src/packs/PIC32MZ1025W104132_DFP"/>
+                  value="../src;../src/config/pic32mz_w1_curiosity;../src/packs/PIC32MZ1025W104132_DFP;"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -317,6 +334,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
         <property key="memories.eeprom" value="true"/>
