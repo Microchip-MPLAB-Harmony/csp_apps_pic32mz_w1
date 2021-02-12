@@ -109,7 +109,7 @@ int main ( void )
                 printf("\n\rPress Switch SW1 to wakeup the device");
                 TMR1_Stop();
                 POWER_LowPowerModeEnter(LOW_POWER_IDLE_MODE);
-                printf("\n\rChange Notice Interrupt came, exiting IDLE mode......");
+                printf("\n\rChange Notice Interrupt detected, exiting IDLE mode......");
                 TMR1_Start();
                 display_menu();
                 break;
@@ -120,7 +120,7 @@ int main ( void )
                 printf("\n\rPress Switch SW1 to wakeup the device         ");
                 TMR1_Stop();
                 POWER_LowPowerModeEnter(LOW_POWER_SLEEP_MODE);
-                printf("\n\rChange Notice Interrupt came, exiting SLEEP mode......");
+                printf("\n\rChange Notice Interrupt detected, exiting SLEEP mode......");
                 TMR1_Start();
                 display_menu();
                 break;

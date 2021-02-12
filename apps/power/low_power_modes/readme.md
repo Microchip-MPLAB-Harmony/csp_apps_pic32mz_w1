@@ -57,7 +57,7 @@ The following table shows the target hardware for the application projects.
 
     ![output](images/console1.png)
 
-5. LED should be continously blinking
+5. LED should be continuously blinking
 6. Follow the instructions on console to verify different low power modes
 
 Following table provides the LED names:
