@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <configurationDescriptor version="65">
   <logicalFolder displayName="root" name="root" projectFiles="true">
     <logicalFolder displayName="Header Files" name="HeaderFiles" projectFiles="true">
@@ -34,9 +34,6 @@
     </logicalFolder>
     <logicalFolder displayName="Important Files" name="ExternalFiles" projectFiles="true">
       <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/pic32mz_w1_curiosity/harmony.prj</itemPath>
-      <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.xml</itemPath>
-      <itemPath>../../../../../../csp_apps_pic32mz_w1/apps/ocmp/ocmp_compare_mode/firmware/src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.xml</itemPath>
       <itemPath>../src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml</itemPath>
     </logicalFolder>
     <logicalFolder displayName="Linker Files" name="LinkerScript" projectFiles="true">
