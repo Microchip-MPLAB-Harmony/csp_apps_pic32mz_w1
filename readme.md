@@ -52,6 +52,7 @@ The following applications are provided to demonstrate the typical or interestin
 | [ICAP capture mode](apps/icap/icap_capture_mode/readme.md) | This example application shows how to use the ICAP peripheral to measure the pulse width of the input signal |
 | [NVM flash read write](apps/nvm/flash_read_write/readme.md) | This example application demonstrates how to use the NVM to erase and program the internal Flash memory |
 | [OCMP compare mode](apps/ocmp/ocmp_compare_mode/readme.md) | This example application shows how to use the OCMP peripheral to generate an active low, active high, and toggle output on compare match |
+| [Low Power Modes](apps/power/low_power_modes/readme.md) | This example application demonstrates how to use different low power modes of the device |
 | [RNG random number](apps/rng/rng_random_number/readme.md) | This example application shows how to use the RNG Peripheral library to generate a pseudo-random number |
 | [RTCC alarm interrupt](apps/rtcc/rtcc_alarm/readme.md) | This example application shows how to use the RTCC to configure the time and generate the alarm |
 | [SPI SST26 flash write read](apps/spi/master/spi_sst26_write_read/readme.md) | This example demonstrates read and writing to SPI based SST26 flash |
