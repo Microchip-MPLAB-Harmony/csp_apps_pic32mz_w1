@@ -4,18 +4,18 @@
 	"content": {
 		"metaDataVersion": "1.1.0",
 		"name": "com.microchip.mcu32.mplabx.project.csp_apps_pic32mz_w1_spi_sst26_write_read",
-		"version": "3.0.1",
+		"version": "3.1.0",
 		"displayName": "SPI SST26 flash write read Example for PIC32MZ W1 Family",
 		"projectName": "sst26_write_read_pic32mz_w1_curiosity",
 		"shortDescription": "This example demonstrates read and writing to SPI based SST26 flash",
 		"ide": {
 			"name": "MPLABX",
-			"semverRange": ">=5.40.0"
+			"semverRange": ">=5.45.0"
 		},
 		"compiler": [
 			{
 				"name": "XC32",
-				"semverRange": ">=2.40.0"
+				"semverRange": ">=2.50.0"
 			}
 		],
 		"dfp": {
@@ -24,7 +24,7 @@
 		},
 		"configurator": {
 			"name": "MHC",
-			"semverRange": ">=3.5.1"
+			"semverRange": ">=3.7.0"
 		},
 		"device": {
 			"metaDataVersion": "1.0.0",
@@ -39,13 +39,17 @@
 		"author": "Microchip",
 		"subcategories": [
 			[
-				"Development Kit", "PIC32MZ W1 Curiosity Board"
+				"Development Kit",
+				"PIC32MZ W1 Curiosity Board"
 			],
 			[
-				"Harmony", "Peripherals", "SPI"
+				"Harmony",
+				"Peripherals",
+				"SPI"
 			],
 			[
-				"Peripherals", "SPI"
+				"Peripherals",
+				"SPI"
 			]
 		],
 		"peripherals": [
