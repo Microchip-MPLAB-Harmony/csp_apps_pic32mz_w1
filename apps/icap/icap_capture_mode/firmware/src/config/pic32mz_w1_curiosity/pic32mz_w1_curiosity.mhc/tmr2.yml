@@ -17,14 +17,14 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tmr2, value: '78125'}
+        attributes: {id: tmr2, value: '390625'}
   - type: Long
     attributes: {id: TIMER_PERIOD}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tmr2, value: '39061'}
+        attributes: {id: tmr2, value: '65535'}
   - type: KeyValueSet
     attributes: {id: TIMER_PRE_SCALER}
     children:
@@ -40,11 +40,18 @@ children:
       - type: Float
         attributes: {id: max}
         children:
-        - {type: Value, value: '838.8736'}
+        - {type: Value, value: '167.77472'}
     - type: Values
       children:
       - type: User
         attributes: {value: '500.0'}
+  - type: Combo
+    attributes: {id: TIMER_UNIT}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: millisecond}
   - type: Boolean
     attributes: {id: TMR_INTERRUPT_MODE}
     children:
@@ -60,4 +67,4 @@ children:
       - type: Dynamic
         attributes: {id: tmr2, value: '256'}
 - type: ElementPosition
-  attributes: {x: '30', y: '120', id: tmr2}
+  attributes: {x: '30', y: '118', id: tmr2}

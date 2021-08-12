@@ -17,7 +17,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: uart1, value: '42'}
+        attributes: {id: uart1, value: '216'}
   - type: KeyValueSet
     attributes: {id: UART_BRGH}
     children:
@@ -41,7 +41,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: uart1, value: '20000000'}
+        attributes: {id: uart1, value: '100000000'}
   - type: Boolean
     attributes: {id: UART_INTERRUPT_MODE_ENABLE}
     children:
