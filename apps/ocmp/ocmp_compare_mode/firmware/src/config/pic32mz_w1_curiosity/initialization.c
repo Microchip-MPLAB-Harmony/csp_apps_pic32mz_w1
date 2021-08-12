@@ -192,11 +192,11 @@ void SYS_Initialize ( void* data )
     __builtin_disable_interrupts();
 
   
-    CLK_Initialize();
-	SYS_PMU_MLDO_TRIM();
+    PMU_Initialize();
+	CLK_Initialize();
 
     /* Configure Wait States */
-    PRECONbits.PFMWS = 1;
+    PRECONbits.PFMWS = 5;
 
 
 

@@ -5,9 +5,9 @@ frameworkPath: ../../../..
 processor: PIC32MZ1025W104132
 projectName: ''
 settings:
-  PackageFilter: csp;
+  PackageFilter: bootloader;bootloader_apps_i2c;bootloader_apps_usb;bsp;core;crypto;crypto_apps_encrypt_decrypt;csp;csp_apps_pic32mk;quick_docs;usb
   FORCE_OPTIMIZATION: 'false'
   GENERATE_BACKUP: 'true'
   CMSISPath: .\dev_packs\arm\CMSIS\5.8.0
   MERGE_STRATEGY: USER_ALL
-  DFPPath: .\dev_packs\Microchip\PIC32MZ-W_DFP\1.1.128\atdf\PIC32MZ1025W104132.atdf
+  DFPPath: .\dev_packs\Microchip\PIC32MZ-W_DFP\1.4.193\atdf\PIC32MZ1025W104132.atdf
