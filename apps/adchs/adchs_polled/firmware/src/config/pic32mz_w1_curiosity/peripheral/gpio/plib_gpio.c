@@ -57,14 +57,11 @@
 */
 void GPIO_Initialize ( void )
 {
+
     /* PORTA Initialization */
-
     /* PORTB Initialization */
-
     /* PORTC Initialization */
-
     /* PORTK Initialization */
-
 
 
     /* PPS Input Remapping */
