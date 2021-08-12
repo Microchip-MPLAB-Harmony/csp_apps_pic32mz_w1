@@ -23,7 +23,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tmr3, value: '20000000'}
+        attributes: {id: tmr3, value: '100000000'}
   - type: Long
     attributes: {id: TIMER_PERIOD}
     children:
@@ -36,7 +36,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tmr3, value: '5999'}
+        attributes: {id: tmr3, value: '29999'}
   - type: KeyValueSet
     attributes: {id: TIMER_PRE_SCALER}
     children:
@@ -79,7 +79,7 @@ children:
       - type: Float
         attributes: {id: max}
         children:
-        - {type: Value, value: '3.27685'}
+        - {type: Value, value: '0.65537'}
       - type: Boolean
         attributes: {id: visible}
         children:

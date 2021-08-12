@@ -33,7 +33,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tmr2, value: '20000000'}
+        attributes: {id: tmr2, value: '100000000'}
   - type: Long
     attributes: {id: TIMER_PERIOD}
     children:
@@ -46,7 +46,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: tmr2, value: '1999999'}
+        attributes: {id: tmr2, value: '49999998'}
   - type: Float
     attributes: {id: TIMER_TIME_PERIOD_MS}
     children:
@@ -55,11 +55,11 @@ children:
       - type: Float
         attributes: {id: max}
         children:
-        - {type: Value, value: '214748.36'}
+        - {type: Value, value: '42949.67'}
     - type: Values
       children:
       - type: User
-        attributes: {value: '100.0'}
+        attributes: {value: '500.0'}
   - type: String
     attributes: {id: TMR_IEC_REG}
     children:

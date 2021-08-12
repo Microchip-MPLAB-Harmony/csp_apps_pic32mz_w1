@@ -367,84 +367,84 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '1'}
+        attributes: {id: core, value: '5'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK1_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '20000000'}
+        attributes: {value: '100000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK2_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '20000000'}
+        attributes: {value: '100000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK3_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '20000000'}
+        attributes: {value: '100000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK4_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '20000000'}
+        attributes: {value: '100000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK5_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '20000000'}
+        attributes: {value: '100000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK6_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '40000000'}
+        attributes: {value: '200000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_REFCLK1_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '40000000'}
+        attributes: {value: '200000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_REFCLK2_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '40000000'}
+        attributes: {value: '200000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_REFCLK3_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '40000000'}
+        attributes: {value: '200000000'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_REFCLK4_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '40000000'}
+        attributes: {value: '200000000'}
   - type: String
     attributes: {id: CPU_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '40000000'}
+        attributes: {id: core, value: '200000000'}
   - type: Integer
     attributes: {id: CRYPTO_CLOCK_FREQUENCY}
     children:
@@ -465,7 +465,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '40000000'}
+        attributes: {id: core, value: '200000000'}
   - type: String
     attributes: {id: ETHCLK}
     children:
@@ -605,14 +605,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: POSC}
+        attributes: {value: SPLL}
   - type: Hex
     attributes: {id: OSCCON_VALUE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '512'}
+        attributes: {id: core, value: '256'}
   - type: Hex
     attributes: {id: PMD1_REG_VALUE}
     children:
@@ -640,28 +640,28 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '40000000'}
+        attributes: {id: core, value: '200000000'}
   - type: Integer
     attributes: {id: REFO2_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '40000000'}
+        attributes: {id: core, value: '200000000'}
   - type: Integer
     attributes: {id: REFO3_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '40000000'}
+        attributes: {id: core, value: '200000000'}
   - type: Integer
     attributes: {id: REFO4_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '40000000'}
+        attributes: {id: core, value: '200000000'}
   - type: Integer
     attributes: {id: RNG_CLOCK_FREQUENCY}
     children:
@@ -731,7 +731,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '40000000'}
+        attributes: {value: '200000000'}
   - type: Hex
     attributes: {id: SYS_PORT_K_TRIS}
     children:
@@ -815,7 +815,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '20000000'}
+        attributes: {id: core, value: '100000000'}
   - type: Boolean
     attributes: {id: TMR3_CLOCK_ENABLE}
     children:
@@ -829,7 +829,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '20000000'}
+        attributes: {id: core, value: '100000000'}
   - type: Integer
     attributes: {id: TMR4_CLOCK_FREQUENCY}
     children:

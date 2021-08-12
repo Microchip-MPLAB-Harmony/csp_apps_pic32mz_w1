@@ -73,7 +73,7 @@ void TMR2_Initialize(void)
     TMR2 = 0x0;
 
     /*Set period */
-    PR2 = 1999999U;
+    PR2 = 49999998U;
 
     /* Enable TMR Interrupt of odd numbered timer in 32-bit mode */
     IEC0SET = _IEC0_T3IE_MASK;
@@ -110,13 +110,13 @@ uint32_t TMR2_CounterGet(void)
 
 uint32_t TMR2_FrequencyGet(void)
 {
-    return (20000000);
+    return (100000000);
 }
 
 
 void TIMER_3_InterruptHandler (void)
 {
-    uint32_t status;
+    uint32_t status  = 0U;
     status = IFS0bits.T3IF;
     IFS0CLR = _IFS0_T3IF_MASK;
 
