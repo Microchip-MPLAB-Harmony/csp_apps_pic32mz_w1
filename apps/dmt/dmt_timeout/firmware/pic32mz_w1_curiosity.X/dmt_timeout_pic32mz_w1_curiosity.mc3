@@ -2211,11 +2211,11 @@
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\clk\plib_clk.c</file>
-         <hash>94293895daea16d68eb4e829631f189caa7b965f192cfed353ae808870f98f40</hash>
+         <hash>21cef3424c2dee9b98271c71cd0247958f6b004ecc5c1440fd4d870d7479ded1</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\initialization.c</file>
-         <hash>9c1ff2dec932da8d6d297b839f7d2ba2490b1da6b23a762e939fde3392131e83</hash>
+         <hash>33b5a23bc3dc6323e6bb690ee2376b6e970942e20dbb1a3dbe869a15682feed6</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\interrupts.h</file>
@@ -2231,7 +2231,7 @@
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\toolchain_specifics.h</file>
-         <hash>5a13891d073d2ad5773c0c59ebe34074f2373103d565643f9e36a3b792feae9c</hash>
+         <hash>84276afca06869943bba17727ff4f41fea61e4f81329ee20a333cafe39562a73</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\exceptions.c</file>

@@ -6,13 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: AB67D8A7D0606ADFF3E9184E6CB5B5F9
-- generatedChecksum: 55F98A1D3F9117564D51CD7F5524EEEC
+- generatedChecksum: BCA2A1440C6BE79B8CB590AD8FD386AF
   logicalPath: config/pic32mz_w1_curiosity
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 55F98A1D3F9117564D51CD7F5524EEEC
+  userChecksum: BCA2A1440C6BE79B8CB590AD8FD386AF
 - generatedChecksum: 21D2C111712C97C6164B44DAF6674CB5
   logicalPath: config/pic32mz_w1_curiosity
   name: interrupts.c
@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: A2BF2F67327C0C6F02CC7F2499F05595
+- generatedChecksum: B19B292DD0D4A6475C6BBEFD37531177
   logicalPath: config/pic32mz_w1_curiosity/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: A2BF2F67327C0C6F02CC7F2499F05595
+  userChecksum: B19B292DD0D4A6475C6BBEFD37531177
 - generatedChecksum: CDE489012C46160ED6A67092B2FFCE99
   logicalPath: config/pic32mz_w1_curiosity/peripheral/coretimer
   name: plib_coretimer.c
@@ -153,13 +153,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 52646F9F1734C5AA98A212549F6FE3E3
-- generatedChecksum: FA212DEAE39D4E86EF4E6CB440610FE9
+- generatedChecksum: CAC44960D20AEC03CF4B325A1CD2877C
   logicalPath: config/pic32mz_w1_curiosity
   name: toolchain_specifics.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: FA212DEAE39D4E86EF4E6CB440610FE9
+  userChecksum: CAC44960D20AEC03CF4B325A1CD2877C
 - generatedChecksum: 38B8D278EA69C81FF16A6EEA4989D1D1
   logicalPath: config/pic32mz_w1_curiosity
   name: p32MZ1025W104132.ld
