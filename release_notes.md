@@ -14,7 +14,7 @@ nav_order: 99
 
 Following table provides number of peripheral library examples available for different development kits.
 
-| Development Kits  | MPLABx applications |
+| Development Kits  | MPLAB X applications |
 |:-----------------:|:-------------------:|
 | PIC32MZ W1 Curiosity Board | 26 |
 
@@ -53,7 +53,7 @@ Following table provides number of peripheral library examples available for dif
 
 Following table provides number of peripheral library examples available for different development kits.
 
-| Development Kits  | MPLABx applications |
+| Development Kits  | MPLAB X applications |
 |:-----------------:|:-------------------:|
 | PIC32MZ W1 Curiosity Board | 26 |
 
@@ -63,7 +63,7 @@ Following table provides number of peripheral library examples available for dif
 
 ### Known Issues
 
-- **PIC32MZ W1 family**: PIC32MZ-W_DFP v1.4.193 or higher should be installed in MPLABx 5.45 for the low power example application to build successfully.
+- **PIC32MZ W1 family**: PIC32MZ-W_DFP v1.4.193 or higher should be installed in MPLAB X 5.45 for the low power example application to build successfully.
 
 ### Development Tools
 
@@ -92,7 +92,7 @@ Following table provides number of peripheral library examples available for dif
 
 Following table provides number of peripheral library examples available for different development kits.
 
-| Development Kits  | MPLABx applications |
+| Development Kits  | MPLAB X applications |
 |:-----------------:|:-------------------:|
 | PIC32MZ W1 Curiosity Board | 25 |
 
