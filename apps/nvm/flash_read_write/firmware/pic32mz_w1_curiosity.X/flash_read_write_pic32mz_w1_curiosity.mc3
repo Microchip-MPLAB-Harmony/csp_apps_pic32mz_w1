@@ -1,4 +1,4 @@
-<config configName="pic32mz_w1_curiosity" projectName="flash_read_write_pic32mz_w1_curiosity" configVersion="1.1" device="PIC32MZ1025W104132" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.2.4">
+<config configName="pic32mz_w1_curiosity" projectName="flash_read_write_pic32mz_w1_curiosity" configVersion="1.1" device="PIC32MZ1025W104132" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.4">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -15,21 +15,21 @@
       </entry>
    </usedClasses>
    <usedLibraries class="java.util.ArrayList">
-      <ILibraryFile class="com.microchip.mcc.core.library.BaseLibraryFile" libraryClass="com.microchip.mcc.harmony.Harmony3Library" version="1.0.1"/>
+      <ILibraryFile class="com.microchip.mcc.core.library.BaseLibraryFile" libraryClass="com.microchip.mcc.harmony.Harmony3Library" version="1.1.0"/>
    </usedLibraries>
    <tokenMap class="java.util.TreeMap">
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;400&quot; canvasWidth=&quot;400&quot; dnOrder=&quot;0&quot;/&gt;
-    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;core&quot; x=&quot;240&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;dfp&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;nvm&quot; x=&quot;340&quot; y=&quot;20&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
+    &lt;GraphSettings canvasHeight=&quot;400&quot; canvasWidth=&quot;400&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -1458,7 +1458,7 @@
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\p32MZ1025W104132.ld</file>
-         <hash>09308de5dfe3ea5211cdd3fc02ea993b7ff098103c055f4643813ffa409c3736</hash>
+         <hash>faa9c359cf4e7de76330fc14ead3392b11c9019b93afdc81801c1f48cc737b50</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\interrupts.c</file>
@@ -1470,11 +1470,11 @@
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\clk\plib_clk.c</file>
-         <hash>d5bd3a318ac52674242eea1cb72c005c143cf8893e2417a7100d388d0f270576</hash>
+         <hash>6383d50d4f2a611ad21fc705b466972d1da89f6181bfcfe7101e06a1af97bd9b</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\initialization.c</file>
-         <hash>8722bd919f2e96f9e5a248fd085f21cf0eb366b796ddbfe3b215b52c76b97cb7</hash>
+         <hash>652b85f792602010a03bd77a443145bd3c616270074e8c95691c6431f9d99f3c</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\interrupts.h</file>
@@ -1482,15 +1482,15 @@
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\nvm\plib_nvm.c</file>
-         <hash>8bedf463fc08f44fef1ad45f709901d99ab14ba186ece7178bc900670b951ed8</hash>
+         <hash>12dc2733c2a98450b988fc718f2e9933e69d8d9480136d2536f62b174dc83889</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\stdio\xc32_monitor.c</file>
-         <hash>26e5749db654ed433fd94f6c732ef8600d0cbf5196493374cf111877c02b694e</hash>
+         <hash>858f8710d4287200a5ee7f3b3ad7c24f505aed9c05c16956ab0ff9f7bb162a6a</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\toolchain_specifics.h</file>
-         <hash>5a13891d073d2ad5773c0c59ebe34074f2373103d565643f9e36a3b792feae9c</hash>
+         <hash>84276afca06869943bba17727ff4f41fea61e4f81329ee20a333cafe39562a73</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\exceptions.c</file>
@@ -1506,7 +1506,7 @@
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\gpio\plib_gpio.h</file>
-         <hash>d4bd0590d48a68a875aff3d65d003ee082919bd8030f8e36cceb08c6d2ecd13a</hash>
+         <hash>f85d0facb8e28a6bfdbd7e7059593f2ec3cf46a3bd57592ccecd6a69c5a025a2</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\evic\plib_evic.h</file>
@@ -1522,15 +1522,15 @@
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\nvm\plib_nvm.h</file>
-         <hash>3b8d2ab5e7c11afd2339e33090b54665cfae6f48acd9e8cdc8c27d8d192fa75d</hash>
+         <hash>0d8aaf0054c6b03cb7c7d256a07a28c6460211ec1553649cd45957595f215a4f</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\evic\plib_evic.c</file>
-         <hash>a3ccec4fe5bab5828692533f8a2327fa5de70e633762a3c2c64022a5922bda47</hash>
+         <hash>73590e5c8aec0797ea6a5c0648ebdc0055d20bf165ec4ebeebb9137e3081e21a</hash>
       </entry>
       <entry>
          <file>..\src\config\pic32mz_w1_curiosity\peripheral\gpio\plib_gpio.c</file>
-         <hash>1320b62e7c6476af699dcd79c72d06e98116c81a6039d770b5a953a1c43365d4</hash>
+         <hash>14c9ead7dfdb11e0411eb4787c40697d2571fc5b5bbe7cd5e5df39d7cf68d65f</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>
