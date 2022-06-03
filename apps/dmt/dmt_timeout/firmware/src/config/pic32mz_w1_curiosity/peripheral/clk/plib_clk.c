@@ -191,11 +191,11 @@ void CLK_Initialize( void )
 		/* SPLLCON = 0x01496869 */
 		/* SPLLBSWSEL   = 5   */
 		/* SPLLPWDN     = PLL_ON     */
-		/* SPLLPOSTDIV1 = 4 */
+		/* SPLLPOSTDIV1 = 6 */
 		/* SPLLFLOCK    = NO_ASSERT    */
 		/* SPLLRST      = NO_ASSERT      */
-		/* SPLLFBDIV    = 20  */
-		/* SPLLREFDIV   = 1   */
+		/* SPLLFBDIV    = 150  */
+		/* SPLLREFDIV   = 5   */
 		/* SPLLICLK     = POSC     */
 		/* SPLL_BYP     = NO_BYPASS     */
 		SPLLCON = 0x414045;
@@ -259,11 +259,11 @@ void CLK_Initialize( void )
 		/* SPLLCON = 0x01496869 */
 		/* SPLLBSWSEL   = 5   */
 		/* SPLLPWDN     = PLL_ON     */
-		/* SPLLPOSTDIV1 = 4 */
+		/* SPLLPOSTDIV1 = 6 */
 		/* SPLLFLOCK    = NO_ASSERT    */
 		/* SPLLRST      = NO_ASSERT      */
-		/* SPLLFBDIV    = 20  */
-		/* SPLLREFDIV   = 1   */
+		/* SPLLFBDIV    = 150  */
+		/* SPLLREFDIV   = 5   */
 		/* SPLLICLK     = POSC     */
 		/* SPLL_BYP     = NO_BYPASS     */
 		SPLLCON = 0x414045;
@@ -302,6 +302,10 @@ void CLK_Initialize( void )
 
 		while( OSCCONbits.OSWEN );        /* wait for indication of successful clock change before proceeding */
 	}
+    /* Peripheral Bus 4 is by default enabled, set its divisor */
+    /* PBDIV = 10 */
+    PB4DIVbits.PBDIV = 9;
+
 
   
 

@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: B19B292DD0D4A6475C6BBEFD37531177
+- generatedChecksum: E2C3441152A1F9A79BA5042AA2F58E9F
   logicalPath: config/pic32mz_w1_curiosity/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: B19B292DD0D4A6475C6BBEFD37531177
+  userChecksum: E2C3441152A1F9A79BA5042AA2F58E9F
 - generatedChecksum: CDE489012C46160ED6A67092B2FFCE99
   logicalPath: config/pic32mz_w1_curiosity/peripheral/coretimer
   name: plib_coretimer.c
@@ -48,27 +48,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 01AC79FEBE5F3F5687DA0041837C58C8
-- generatedChecksum: E1B952086946C7331944D2D11E33CBD1
+- generatedChecksum: 82394301886F3CE26F6FD88D6C7493CF
   logicalPath: config/pic32mz_w1_curiosity/peripheral/evic
   name: plib_evic.c
   physicalPath: peripheral/evic
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E1B952086946C7331944D2D11E33CBD1
-- generatedChecksum: 52469C2262B3480C11C0755602432B8B
+  userChecksum: 82394301886F3CE26F6FD88D6C7493CF
+- generatedChecksum: D96DE91396739EB9EB5E2749B7283BD4
   logicalPath: config/pic32mz_w1_curiosity/peripheral/gpio
   name: plib_gpio.c
   physicalPath: peripheral/gpio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 52469C2262B3480C11C0755602432B8B
-- generatedChecksum: 960695694D392B781C1CA96648DBBFC0
+  userChecksum: D96DE91396739EB9EB5E2749B7283BD4
+- generatedChecksum: AE604F3000CBB648C9C8BB7EA99F10F2
   logicalPath: config/pic32mz_w1_curiosity/peripheral/uart
   name: plib_uart1.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 960695694D392B781C1CA96648DBBFC0
+  userChecksum: AE604F3000CBB648C9C8BB7EA99F10F2
 - generatedChecksum: 290251D6FF0845DC4259E0EF74DCB657
   logicalPath: config/pic32mz_w1_curiosity
   name: pmu_init.c
@@ -76,13 +76,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 290251D6FF0845DC4259E0EF74DCB657
-- generatedChecksum: A636C701B81D51E1D15E7ECB7F0FDE65
+- generatedChecksum: 42A948E504602741B0D592C55FCD9A7B
   logicalPath: config/pic32mz_w1_curiosity/stdio
   name: xc32_monitor.c
   physicalPath: stdio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: A636C701B81D51E1D15E7ECB7F0FDE65
+  userChecksum: 42A948E504602741B0D592C55FCD9A7B
 - generatedChecksum: 0B3AEF932773F79FD627BA18A234CC65
   logicalPath: config/pic32mz_w1_curiosity
   name: definitions.h
@@ -118,13 +118,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 2AE197E7D597C560D9068E8D88DE0BEC
-- generatedChecksum: 4C076A9295E0EC57E2225A3DADEC0343
+- generatedChecksum: 27A846AD5273C5B4009CEB0942D75D80
   logicalPath: config/pic32mz_w1_curiosity/peripheral/dmt
   name: plib_dmt.h
   physicalPath: peripheral/dmt
   security: NON_SECURE
   type: HEADER
-  userChecksum: 4C076A9295E0EC57E2225A3DADEC0343
+  userChecksum: 27A846AD5273C5B4009CEB0942D75D80
 - generatedChecksum: 2B5072810107E051495C4B6379DEDA4E
   logicalPath: config/pic32mz_w1_curiosity/peripheral/evic
   name: plib_evic.h
@@ -132,13 +132,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 2B5072810107E051495C4B6379DEDA4E
-- generatedChecksum: 081BBCE8AB8CD4A5270F24DBD8E4C2F5
+- generatedChecksum: 706D18D3177AC45ABD1E0E8BC7998E8A
   logicalPath: config/pic32mz_w1_curiosity/peripheral/gpio
   name: plib_gpio.h
   physicalPath: peripheral/gpio
   security: NON_SECURE
   type: HEADER
-  userChecksum: 081BBCE8AB8CD4A5270F24DBD8E4C2F5
+  userChecksum: 706D18D3177AC45ABD1E0E8BC7998E8A
 - generatedChecksum: 2B111FC8ADC9E50611E481BE82CD3982
   logicalPath: config/pic32mz_w1_curiosity/peripheral/uart
   name: plib_uart1.h
@@ -160,13 +160,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CAC44960D20AEC03CF4B325A1CD2877C
-- generatedChecksum: 38B8D278EA69C81FF16A6EEA4989D1D1
+- generatedChecksum: 5A572F472102C65199D46D0D6E3E66AD
   logicalPath: config/pic32mz_w1_curiosity
   name: p32MZ1025W104132.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 38B8D278EA69C81FF16A6EEA4989D1D1
+  userChecksum: 5A572F472102C65199D46D0D6E3E66AD
 format_version: v1.0
 libraries: []
 settings:
