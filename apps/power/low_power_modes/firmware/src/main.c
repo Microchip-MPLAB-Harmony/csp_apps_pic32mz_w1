@@ -91,7 +91,7 @@ int main ( void )
     
     resetCause = RCON_ResetCauseGet();
     
-    POWER_ReleaseGPIO();
+    POWER_DS_ReleaseGPIO();
 
     /* Check if RESET was after deep sleep wakeup */
     if (((resetCause & RCON_RESET_CAUSE_DPSLP) == RCON_RESET_CAUSE_DPSLP))
@@ -99,10 +99,10 @@ int main ( void )
         RCON_ResetCauseClear(RCON_RESET_CAUSE_DPSLP);
         
         /* Recollect the saved characters */
-        savedChar[0]= POWER_DSGPR_Read(POWER_DSGPR0);
-        savedChar[1]= POWER_DSGPR_Read(POWER_DSGPR1);
-        savedChar[2]= POWER_DSGPR_Read(POWER_DSGPR2);
-        savedChar[3]= POWER_DSGPR_Read(POWER_DSGPR3);
+        savedChar[0]= POWER_DS_GPR_Read(POWER_DS_GPR0);
+        savedChar[1]= POWER_DS_GPR_Read(POWER_DS_GPR1);
+        savedChar[2]= POWER_DS_GPR_Read(POWER_DS_GPR2);
+        savedChar[3]= POWER_DS_GPR_Read(POWER_DS_GPR3);
 
         printf("\r\n\r\nDevice woke up after deep sleep mode due to INT0 interrupt reset.\r\n");
         printf("Four letters which were typed before entering into deep sleep state are:\r\n");
@@ -154,10 +154,10 @@ int main ( void )
                 UART1_Read(&typedChar[0], 4);
 
                 /* Save the typed characters in DSGPR registers which will retain during deep sleep */
-                POWER_DSGPR_Write(POWER_DSGPR0, typedChar[0]);
-                POWER_DSGPR_Write(POWER_DSGPR1, typedChar[1]);
-                POWER_DSGPR_Write(POWER_DSGPR2, typedChar[2]);
-                POWER_DSGPR_Write(POWER_DSGPR3, typedChar[3]);
+                POWER_DS_GPR_Write(POWER_DS_GPR0, typedChar[0]);
+                POWER_DS_GPR_Write(POWER_DS_GPR1, typedChar[1]);
+                POWER_DS_GPR_Write(POWER_DS_GPR2, typedChar[2]);
+                POWER_DS_GPR_Write(POWER_DS_GPR3, typedChar[3]);
 
                 printf("Letters which were typed are:\r\n");
                 UART1_Write((uint8_t*)&typedChar[0],sizeof(typedChar));
