@@ -54,14 +54,10 @@
 // ****************************************************************************
 // ****************************************************************************
 
-
-
-
 /*** FBCFG0 ***/
 #pragma config BUHSWEN =    OFF
 #pragma config PCSCMODE =    DUAL
 #pragma config BOOTISA =    MIPS32
-
 
 
 /*** DEVCFG0 ***/
@@ -107,7 +103,6 @@
 #pragma config WDTPSS =    PSS1
 
 
-
 /*** DEVCFG2 ***/
 #pragma config DMTINTV =    WIN_63_64
 #pragma config POSCMOD =    HS
@@ -125,7 +120,6 @@
 #pragma config DMTEN =    OFF
 
 
-
 /*** DEVCFG4 ***/
 #pragma config SOSCCFG =    0
 #pragma config VBZPBOREN =    ON
@@ -135,6 +129,11 @@
 #pragma config DSWDTEN =    OFF
 #pragma config DSEN =    OFF
 #pragma config SOSCEN =    OFF
+
+
+/*** FCPN0 ***/
+#pragma config CP =    OFF
+
 
 
 
