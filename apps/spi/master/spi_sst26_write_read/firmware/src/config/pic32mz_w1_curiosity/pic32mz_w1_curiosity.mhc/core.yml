@@ -941,7 +941,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '4276293'}
+        attributes: {id: core, value: '4276325'}
   - type: Integer
     attributes: {id: SQI1_CLOCK_FREQUENCY}
     children:
