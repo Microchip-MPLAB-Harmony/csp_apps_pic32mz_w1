@@ -15,4 +15,3 @@ compiler: xc32
 modules:
     - {name: "csp", version: "unknown"}
     - {name: "dev_packs", version: "unknown"}
-
