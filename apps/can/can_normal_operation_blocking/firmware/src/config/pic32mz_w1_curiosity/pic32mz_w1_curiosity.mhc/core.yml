@@ -823,20 +823,6 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
-  - type: Integer
-    attributes: {id: SPLLCON_SPLLBSWSEL_VALUE}
-    children:
-    - type: Values
-      children:
-      - type: Dynamic
-        attributes: {id: core, value: '5'}
-  - type: Integer
-    attributes: {id: SPLLCON_SPLLFBDIV_VALUE}
-    children:
-    - type: Values
-      children:
-      - type: User
-        attributes: {value: '20'}
   - type: Combo
     attributes: {id: SPLLCON_SPLLICLK_VALUE}
     children:
@@ -864,7 +850,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '4276325'}
+        attributes: {id: core, value: '21586017'}
   - type: Integer
     attributes: {id: SQI1_CLOCK_FREQUENCY}
     children:

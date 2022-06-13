@@ -189,7 +189,7 @@ void CLK_Initialize( void )
 		CFGCON0bits.SPLLHWMD = 1;
 
 		/* SPLLCON = 0x01496869 */
-		/* SPLLBSWSEL   = 5   */
+		/* SPLLBSWSEL   = 1   */
 		/* SPLLPWDN     = PLL_ON     */
 		/* SPLLPOSTDIV1 = 6 */
 		/* SPLLFLOCK    = NO_ASSERT    */
@@ -198,7 +198,7 @@ void CLK_Initialize( void )
 		/* SPLLREFDIV   = 5   */
 		/* SPLLICLK     = POSC     */
 		/* SPLL_BYP     = NO_BYPASS     */
-		SPLLCON = 0x414045;
+		SPLLCON = 0x1496061;
 
         /* OSWEN    = SWITCH_COMPLETE    */
 		/* SOSCEN   = OFF   */
@@ -257,7 +257,7 @@ void CLK_Initialize( void )
 		CFGCON3 = 10;
         CFGCON0bits.SPLLHWMD = 1;
 		/* SPLLCON = 0x01496869 */
-		/* SPLLBSWSEL   = 5   */
+		/* SPLLBSWSEL   = 1   */
 		/* SPLLPWDN     = PLL_ON     */
 		/* SPLLPOSTDIV1 = 6 */
 		/* SPLLFLOCK    = NO_ASSERT    */
@@ -266,7 +266,7 @@ void CLK_Initialize( void )
 		/* SPLLREFDIV   = 5   */
 		/* SPLLICLK     = POSC     */
 		/* SPLL_BYP     = NO_BYPASS     */
-		SPLLCON = 0x414045;
+		SPLLCON = 0x1496061;
 
 
 		/* Power down the UPLL */

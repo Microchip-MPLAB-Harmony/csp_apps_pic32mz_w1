@@ -27,13 +27,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 2AA55B2F89F789875834A10E65A0C33B
+- generatedChecksum: D76E4E6A6B2F1B727D8E5B0CDC9B34B5
   logicalPath: config/pic32mz_w1_curiosity/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 2AA55B2F89F789875834A10E65A0C33B
+  userChecksum: D76E4E6A6B2F1B727D8E5B0CDC9B34B5
 - generatedChecksum: 9A3F1C5EA7256571F6A42BEB570AAD51
   logicalPath: config/pic32mz_w1_curiosity/peripheral/dmac
   name: plib_dmac.c

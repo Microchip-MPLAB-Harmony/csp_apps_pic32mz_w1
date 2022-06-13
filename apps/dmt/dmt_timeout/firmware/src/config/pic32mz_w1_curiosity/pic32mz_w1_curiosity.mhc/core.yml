@@ -938,20 +938,6 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
   - type: Integer
-    attributes: {id: SPLLCON_SPLLBSWSEL_VALUE}
-    children:
-    - type: Values
-      children:
-      - type: Dynamic
-        attributes: {id: core, value: '5'}
-  - type: Hex
-    attributes: {id: SPLLCON_VALUE}
-    children:
-    - type: Values
-      children:
-      - type: Dynamic
-        attributes: {id: core, value: '4276293'}
-  - type: Integer
     attributes: {id: SQI1_CLOCK_FREQUENCY}
     children:
     - type: Values

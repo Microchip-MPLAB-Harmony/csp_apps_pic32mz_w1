@@ -198,7 +198,7 @@ void CLK_Initialize( void )
 		/* SPLLREFDIV   = 5   */
 		/* SPLLICLK     = POSC     */
 		/* SPLL_BYP     = NO_BYPASS     */
-		SPLLCON = 0x419065;
+		SPLLCON = 0x1496061;
 
         /* OSWEN    = SWITCH_COMPLETE    */
 		/* SOSCEN   = OFF   */
@@ -266,7 +266,7 @@ void CLK_Initialize( void )
 		/* SPLLREFDIV   = 5   */
 		/* SPLLICLK     = POSC     */
 		/* SPLL_BYP     = NO_BYPASS     */
-		SPLLCON = 0x419065;
+		SPLLCON = 0x1496061;
 
 
 		/* Power down the UPLL */
