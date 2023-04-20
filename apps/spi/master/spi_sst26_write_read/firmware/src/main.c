@@ -116,9 +116,9 @@ typedef struct
     volatile bool       isTransferDone;
 }APP_SST26_DATA;
 
-APP_SST26_DATA          appSST26Data;
-uint8_t                 writeDataBuffer[APP_SST26_PAGE_PROGRAM_SIZE_BYTES];
-uint8_t                 readDataBuffer[APP_SST26_PAGE_PROGRAM_SIZE_BYTES];
+static APP_SST26_DATA          appSST26Data;
+static uint8_t                 writeDataBuffer[APP_SST26_PAGE_PROGRAM_SIZE_BYTES];
+static uint8_t                 readDataBuffer[APP_SST26_PAGE_PROGRAM_SIZE_BYTES];
 
 void APP_SST26_Reset(void)
 {    
