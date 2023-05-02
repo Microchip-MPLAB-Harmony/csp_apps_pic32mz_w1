@@ -50,6 +50,7 @@
 // *****************************************************************************
 #include <sys/kmem.h>
 #include "plib_canfd2.h"
+#include "interrupts.h"
 
 
 // *****************************************************************************
@@ -60,34 +61,34 @@
 /* CAN2 Message memory size */
 #define CANFD_MESSAGE_RAM_CONFIG_SIZE 224
 /* Number of configured FIFO */
-#define CANFD_NUM_OF_FIFO             2
+#define CANFD_NUM_OF_FIFO             2U
 /* Maximum number of CAN Message buffers in each FIFO */
 #define CANFD_FIFO_MESSAGE_BUFFER_MAX 32
 
-#define CANFD_CONFIGURATION_MODE      0x4
-#define CANFD_OPERATION_MODE          0x0
-#define CANFD_NUM_OF_FILTER           1
+#define CANFD_CONFIGURATION_MODE      0x4UL
+#define CANFD_OPERATION_MODE          (0x0UL)
+#define CANFD_NUM_OF_FILTER           1U
 /* FIFO Offset in word (4 bytes) */
-#define CANFD_FIFO_OFFSET             0x3
+#define CANFD_FIFO_OFFSET             0x3U
 /* Filter Offset in word (4 bytes) */
-#define CANFD_FILTER_OFFSET           0x1
-#define CANFD_FILTER_OBJ_OFFSET       0x2
+#define CANFD_FILTER_OFFSET           0x1U
+#define CANFD_FILTER_OBJ_OFFSET       0x2U
 /* Acceptance Mask Offset in word (4 bytes) */
-#define CANFD_ACCEPTANCE_MASK_OFFSET  0x2
-#define CANFD_MSG_SID_MASK            0x7FF
-#define CANFD_MSG_EID_MASK            0x1FFFFFFF
-#define CANFD_MSG_DLC_MASK            0x0000000F
-#define CANFD_MSG_IDE_MASK            0x00000010
-#define CANFD_MSG_RTR_MASK            0x00000020
-#define CANFD_MSG_BRS_MASK            0x00000040
-#define CANFD_MSG_FDF_MASK            0x00000080
-#define CANFD_MSG_SEQ_MASK            0xFFFFFE00
-#define CANFD_MSG_TX_EXT_SID_MASK     0x1FFC0000
-#define CANFD_MSG_TX_EXT_EID_MASK     0x0003FFFF
-#define CANFD_MSG_RX_EXT_SID_MASK     0x000007FF
-#define CANFD_MSG_RX_EXT_EID_MASK     0x1FFFF800
-#define CANFD_MSG_FLT_EXT_SID_MASK    0x1FFC0000
-#define CANFD_MSG_FLT_EXT_EID_MASK    0x0003FFFF
+#define CANFD_ACCEPTANCE_MASK_OFFSET  0x2U
+#define CANFD_MSG_SID_MASK            (0x7FFU)
+#define CANFD_MSG_EID_MASK            (0x1FFFFFFFU)
+#define CANFD_MSG_DLC_MASK            (0x0000000FU)
+#define CANFD_MSG_IDE_MASK            (0x00000010U)
+#define CANFD_MSG_RTR_MASK            (0x00000020U)
+#define CANFD_MSG_BRS_MASK            (0x00000040U)
+#define CANFD_MSG_FDF_MASK            (0x00000080U)
+#define CANFD_MSG_SEQ_MASK            (0xFFFFFE00U)
+#define CANFD_MSG_TX_EXT_SID_MASK     (0x1FFC0000U)
+#define CANFD_MSG_TX_EXT_EID_MASK     (0x0003FFFFU)
+#define CANFD_MSG_RX_EXT_SID_MASK     (0x000007FFUL)
+#define CANFD_MSG_RX_EXT_EID_MASK     (0x1FFFF800U)
+#define CANFD_MSG_FLT_EXT_SID_MASK    (0x1FFC0000UL)
+#define CANFD_MSG_FLT_EXT_EID_MASK    (0x0003FFFFU)
 
 static uint8_t __attribute__((coherent, aligned(16))) can_message_buffer[CANFD_MESSAGE_RAM_CONFIG_SIZE];
 static const uint8_t dlcToLength[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 20, 24, 32, 48, 64};
@@ -97,39 +98,52 @@ Local Functions
 ******************************************************************************/
 static void CANLengthToDlcGet(uint8_t length, uint8_t *dlc)
 {
-    if (length <= 8)
+    if (length <= 8U)
     {
         *dlc = length;
     }
-    else if (length <= 12)
+    else if (length <= 12U)
     {
-        *dlc = 0x9;
+        *dlc = 0x9U;
     }
-    else if (length <= 16)
+    else if (length <= 16U)
     {
-        *dlc = 0xA;
+        *dlc = 0xAU;
     }
-    else if (length <= 20)
+    else if (length <= 20U)
     {
-        *dlc = 0xB;
+        *dlc = 0xBU;
     }
-    else if (length <= 24)
+    else if (length <= 24U)
     {
-        *dlc = 0xC;
+        *dlc = 0xCU;
     }
-    else if (length <= 32)
+    else if (length <= 32U)
     {
-        *dlc = 0xD;
+        *dlc = 0xDU;
     }
-    else if (length <= 48)
+    else if (length <= 48U)
     {
-        *dlc = 0xE;
+        *dlc = 0xEU;
     }
     else
     {
-        *dlc = 0xF;
+        *dlc = 0xFU;
     }
 }
+
+static inline void CAN2_ZeroInitialize(volatile void* pData, size_t dataSize)
+{
+    volatile uint8_t* data = (volatile uint8_t*)pData;
+    for (uint32_t index = 0; index < dataSize; index++)
+    {
+        data[index] = 0U;
+    }
+}
+
+/* MISRAC 2012 deviation block start */
+/* MISRA C-2012 Rule 11.6 deviated 6 times. Deviation record ID -  H3_MISRAC_2012_R_11_6_DR_1 */
+/* MISRA C-2012 Rule 5.1 deviated 1 time. Deviation record ID -  H3_MISRAC_2012_R_5_1_DR_1 */
 
 // *****************************************************************************
 // *****************************************************************************
@@ -159,47 +173,53 @@ void CAN2_Initialize(void)
 
     /* Switch the CAN module to Configuration mode. Wait until the switch is complete */
     CFD2CON = (CFD2CON & ~_CFD2CON_REQOP_MASK) | ((CANFD_CONFIGURATION_MODE << _CFD2CON_REQOP_POSITION) & _CFD2CON_REQOP_MASK);
-    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_CONFIGURATION_MODE);
+    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_CONFIGURATION_MODE)
+    {
+        /* Do Nothing */
+    }
 
     /* Set the Data bitrate to 2000 Kbps */
-    CFD2DBTCFG = ((1 << _CFD2DBTCFG_BRP_POSITION) & _CFD2DBTCFG_BRP_MASK)
-               | ((16 << _CFD2DBTCFG_TSEG1_POSITION) & _CFD2DBTCFG_TSEG1_MASK)
-               | ((6 << _CFD2DBTCFG_TSEG2_POSITION) & _CFD2DBTCFG_TSEG2_MASK)
-               | ((6 << _CFD2DBTCFG_SJW_POSITION) & _CFD2DBTCFG_SJW_MASK);
+    CFD2DBTCFG = ((1UL << _CFD2DBTCFG_BRP_POSITION) & _CFD2DBTCFG_BRP_MASK)
+               | ((16UL << _CFD2DBTCFG_TSEG1_POSITION) & _CFD2DBTCFG_TSEG1_MASK)
+               | ((6UL << _CFD2DBTCFG_TSEG2_POSITION) & _CFD2DBTCFG_TSEG2_MASK)
+               | ((6UL << _CFD2DBTCFG_SJW_POSITION) & _CFD2DBTCFG_SJW_MASK);
 
     /* Set the Nominal bitrate to 500 Kbps */
-    CFD2NBTCFG = ((9 << _CFD2NBTCFG_BRP_POSITION) & _CFD2NBTCFG_BRP_MASK)
-               | ((13 << _CFD2NBTCFG_TSEG1_POSITION) & _CFD2NBTCFG_TSEG1_MASK)
-               | ((4 << _CFD2NBTCFG_TSEG2_POSITION) & _CFD2NBTCFG_TSEG2_MASK)
-               | ((4 << _CFD2NBTCFG_SJW_POSITION) & _CFD2NBTCFG_SJW_MASK);
+    CFD2NBTCFG = ((9UL << _CFD2NBTCFG_BRP_POSITION) & _CFD2NBTCFG_BRP_MASK)
+               | ((13UL << _CFD2NBTCFG_TSEG1_POSITION) & _CFD2NBTCFG_TSEG1_MASK)
+               | ((4UL << _CFD2NBTCFG_TSEG2_POSITION) & _CFD2NBTCFG_TSEG2_MASK)
+               | ((4UL << _CFD2NBTCFG_SJW_POSITION) & _CFD2NBTCFG_SJW_MASK);
 
     /* Set Message memory base address for all FIFOs/Queue */
     CFD2FIFOBA = (uint32_t)KVA_TO_PA(can_message_buffer);
 
     /* Tx Event FIFO Configuration */
-    CFD2TEFCON = (((1 - 1) << _CFD2TEFCON_FSIZE_POSITION) & _CFD2TEFCON_FSIZE_MASK);
+    CFD2TEFCON = (((1UL - 1UL) << _CFD2TEFCON_FSIZE_POSITION) & _CFD2TEFCON_FSIZE_MASK);
     CFD2CON |= _CFD2CON_STEF_MASK;
 
     /* Tx Queue Configuration */
-    CFD2TXQCON = (((1 - 1) << _CFD2TXQCON_FSIZE_POSITION) & _CFD2TXQCON_FSIZE_MASK)
-               | ((0x7 << _CFD2TXQCON_PLSIZE_POSITION) & _CFD2TXQCON_PLSIZE_MASK)
-               | ((0x0 << _CFD2TXQCON_TXPRI_POSITION) & _CFD2TXQCON_TXPRI_MASK);
+    CFD2TXQCON = (((1UL - 1UL) << _CFD2TXQCON_FSIZE_POSITION) & _CFD2TXQCON_FSIZE_MASK)
+               | ((0x7UL << _CFD2TXQCON_PLSIZE_POSITION) & _CFD2TXQCON_PLSIZE_MASK)
+               | ((0x0UL << _CFD2TXQCON_TXPRI_POSITION) & _CFD2TXQCON_TXPRI_MASK);
     CFD2CON |= _CFD2CON_TXQEN_MASK;
 
 
     /* Configure CAN FIFOs */
-    CFD2FIFOCON1 = (((1 - 1) << _CFD2FIFOCON1_FSIZE_POSITION) & _CFD2FIFOCON1_FSIZE_MASK) | _CFD2FIFOCON1_TXEN_MASK | ((0x0 << _CFD2FIFOCON1_TXPRI_POSITION) & _CFD2FIFOCON1_TXPRI_MASK) | ((0x0 << _CFD2FIFOCON1_RTREN_POSITION) & _CFD2FIFOCON1_RTREN_MASK) | ((0x7 << _CFD2FIFOCON1_PLSIZE_POSITION) & _CFD2FIFOCON1_PLSIZE_MASK);
-    CFD2FIFOCON2 = (((1 - 1) << _CFD2FIFOCON2_FSIZE_POSITION) & _CFD2FIFOCON2_FSIZE_MASK) | ((0x7 << _CFD2FIFOCON2_PLSIZE_POSITION) & _CFD2FIFOCON2_PLSIZE_MASK);
+    CFD2FIFOCON1 = (((1UL - 1UL) << _CFD2FIFOCON1_FSIZE_POSITION) & _CFD2FIFOCON1_FSIZE_MASK) | _CFD2FIFOCON1_TXEN_MASK | ((0x0UL << _CFD2FIFOCON1_TXPRI_POSITION) & _CFD2FIFOCON1_TXPRI_MASK) | ((0x0UL << _CFD2FIFOCON1_RTREN_POSITION) & _CFD2FIFOCON1_RTREN_MASK) | ((0x7UL << _CFD2FIFOCON1_PLSIZE_POSITION) & _CFD2FIFOCON1_PLSIZE_MASK);
+    CFD2FIFOCON2 = (((1UL - 1UL) << _CFD2FIFOCON2_FSIZE_POSITION) & _CFD2FIFOCON2_FSIZE_MASK) | ((0x7UL << _CFD2FIFOCON2_PLSIZE_POSITION) & _CFD2FIFOCON2_PLSIZE_MASK);
 
     /* Configure CAN Filters */
     /* Filter 0 configuration */
-    CFD2FLTOBJ0 = (0 & CANFD_MSG_SID_MASK);
-    CFD2MASK0 = (0 & CANFD_MSG_SID_MASK);
-    CFD2FLTCON0 |= (((0x2 << _CFD2FLTCON0_F0BP_POSITION) & _CFD2FLTCON0_F0BP_MASK)| _CFD2FLTCON0_FLTEN0_MASK);
+    CFD2FLTOBJ0 = (0U & CANFD_MSG_SID_MASK);
+    CFD2MASK0 = (0U & CANFD_MSG_SID_MASK);
+    CFD2FLTCON0 |= (((0x2UL << _CFD2FLTCON0_F0BP_POSITION) & _CFD2FLTCON0_F0BP_MASK)| _CFD2FLTCON0_FLTEN0_MASK);
 
     /* Switch the CAN module to CANFD_OPERATION_MODE. Wait until the switch is complete */
     CFD2CON = (CFD2CON & ~_CFD2CON_REQOP_MASK) | ((CANFD_OPERATION_MODE << _CFD2CON_REQOP_POSITION) & _CFD2CON_REQOP_MASK);
-    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_OPERATION_MODE);
+    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_OPERATION_MODE)
+    {
+        /* Do Nothing */
+    }
 }
 
 // *****************************************************************************
@@ -233,7 +253,7 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
     uint8_t dlc = 0;
     bool status = false;
 
-    if (fifoQueueNum == 0)
+    if (fifoQueueNum == 0U)
     {
         if ((CFD2TXQSTA & _CFD2TXQSTA_TXQNIF_MASK) == _CFD2TXQSTA_TXQNIF_MASK)
         {
@@ -243,11 +263,15 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
     }
     else if (fifoQueueNum <= CANFD_NUM_OF_FIFO)
     {
-        if ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) == _CFD2FIFOSTA1_TFNRFNIF_MASK)
+        if ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoQueueNum - 1U) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) == _CFD2FIFOSTA1_TFNRFNIF_MASK)
         {
-            txMessage = (CANFD_TX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)));
+            txMessage = (CANFD_TX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoQueueNum - 1U) * CANFD_FIFO_OFFSET)));
             status = true;
         }
+    }
+    else
+    {
+        /* Do Nothing */
     }
 
     if (status)
@@ -264,12 +288,14 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
             txMessage->t0 = id;
             txMessage->t1 = 0;
         }
-        if (length > 64)
+        if (length > 64U)
+        {
             length = 64;
+        }
 
         CANLengthToDlcGet(length, &dlc);
 
-        txMessage->t1 |= (dlc & CANFD_MSG_DLC_MASK);
+        txMessage->t1 |= ((uint32_t)dlc & (uint32_t)CANFD_MSG_DLC_MASK);
 
         if(mode == CANFD_MODE_FD_WITH_BRS)
         {
@@ -279,6 +305,10 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
         {
             txMessage->t1 |= CANFD_MSG_FDF_MASK;
         }
+        else
+        {
+            /* Do Nothing */
+        }
         if (msgAttr == CANFD_MSG_TX_REMOTE_FRAME)
         {
             txMessage->t1 |= CANFD_MSG_RTR_MASK;
@@ -287,13 +317,16 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
         {
             while(count < length)
             {
-                txMessage->data[count++] = *data++;
+                txMessage->data[count] = *data;
+                count++;
+                data++;
             }
         }
 
-        txMessage->t1 |= ((++sequence << 9) & CANFD_MSG_SEQ_MASK);
+        ++sequence;
+        txMessage->t1 |= ((sequence << 9) & CANFD_MSG_SEQ_MASK);
 
-        if (fifoQueueNum == 0)
+        if (fifoQueueNum == 0U)
         {
             /* Request the transmit */
             CFD2TXQCON |= _CFD2TXQCON_UINC_MASK;
@@ -302,8 +335,8 @@ bool CAN2_MessageTransmit(uint32_t id, uint8_t length, uint8_t* data, uint8_t fi
         else
         {
             /* Request the transmit */
-            *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
-            *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_TXREQ_MASK;
+            *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1U) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
+            *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1U) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_TXREQ_MASK;
         }
     }
     return status;
@@ -344,13 +377,13 @@ bool CAN2_MessageReceive(uint32_t *id, uint8_t *length, uint8_t *data, uint32_t 
     }
 
     /* Check if there is a message available in FIFO */
-    if ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) == _CFD2FIFOSTA1_TFNRFNIF_MASK)
+    if ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoNum - 1U) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) == _CFD2FIFOSTA1_TFNRFNIF_MASK)
     {
         /* Get a pointer to RX message buffer */
-        rxMessage = (CANFD_RX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)));
+        rxMessage = (CANFD_RX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoNum - 1U) * CANFD_FIFO_OFFSET)));
 
         /* Check if it's a extended message type */
-        if (rxMessage->r1 & CANFD_MSG_IDE_MASK)
+        if ((rxMessage->r1 & CANFD_MSG_IDE_MASK) != 0U)
         {
             *id = (((rxMessage->r0 & CANFD_MSG_RX_EXT_SID_MASK) << 18) | ((rxMessage->r0 & CANFD_MSG_RX_EXT_EID_MASK) >> 11)) & CANFD_MSG_EID_MASK;
         }
@@ -359,7 +392,7 @@ bool CAN2_MessageReceive(uint32_t *id, uint8_t *length, uint8_t *data, uint32_t 
             *id = rxMessage->r0 & CANFD_MSG_SID_MASK;
         }
 
-        if ((rxMessage->r1 & CANFD_MSG_RTR_MASK) && ((rxMessage->r1 & CANFD_MSG_FDF_MASK) == 0))
+        if (((rxMessage->r1 & CANFD_MSG_RTR_MASK) != 0U) && ((rxMessage->r1 & CANFD_MSG_FDF_MASK) == 0U))
         {
             *msgAttr = CANFD_MSG_RX_REMOTE_FRAME;
         }
@@ -377,11 +410,13 @@ bool CAN2_MessageReceive(uint32_t *id, uint8_t *length, uint8_t *data, uint32_t 
         /* Copy the data into the payload */
         while (count < *length)
         {
-            *data++ = rxMessage->data[count++];
+            *data = rxMessage->data[count];
+             data++;
+             count++;
         }
 
         /* Message processing is done, update the message buffer pointer. */
-        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
+        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1U) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
 
         /* Message is processed successfully, so return true */
         status = true;
@@ -408,13 +443,17 @@ bool CAN2_MessageReceive(uint32_t *id, uint8_t *length, uint8_t *data, uint32_t 
 */
 void CAN2_MessageAbort(uint8_t fifoQueueNum)
 {
-    if (fifoQueueNum == 0)
+    if (fifoQueueNum == 0U)
     {
         CFD2TXQCON &= ~_CFD2TXQCON_TXREQ_MASK;
     }
     else if (fifoQueueNum <= CANFD_NUM_OF_FIFO)
     {
-        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) &= ~_CFD2FIFOCON1_TXREQ_MASK;
+        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoQueueNum - 1U) * CANFD_FIFO_OFFSET)) &= ~_CFD2FIFOCON1_TXREQ_MASK;
+    }
+    else
+    {
+        /* Do Nothing */
     }
 }
 
@@ -443,7 +482,7 @@ void CAN2_MessageAcceptanceFilterSet(uint8_t filterNum, uint32_t id)
     if (filterNum < CANFD_NUM_OF_FILTER)
     {
         filterRegIndex = filterNum >> 2;
-        filterEnableBit = (filterNum % 4 == 0)? _CFD2FLTCON0_FLTEN0_MASK : 1 << ((((filterNum % 4) + 1) * 8) - 1);
+        filterEnableBit = _CFD2FLTCON0_FLTEN0_MASK;
 
         *(volatile uint32_t *)(&CFD2FLTCON0 + (filterRegIndex * CANFD_FILTER_OFFSET)) &= ~filterEnableBit;
 
@@ -481,10 +520,10 @@ uint32_t CAN2_MessageAcceptanceFilterGet(uint8_t filterNum)
 
     if (filterNum < CANFD_NUM_OF_FILTER)
     {
-        if (*(volatile uint32_t *)(&CFD2FLTOBJ0 + (filterNum * CANFD_FILTER_OBJ_OFFSET)) & _CFD2FLTOBJ0_EXIDE_MASK)
+        if ((*(volatile uint32_t *)(&CFD2FLTOBJ0 + (filterNum * CANFD_FILTER_OBJ_OFFSET)) & _CFD2FLTOBJ0_EXIDE_MASK) != 0U)
         {
-            id = (((*(volatile uint32_t *)(&CFD2FLTOBJ0 + (filterNum * CANFD_FILTER_OBJ_OFFSET)) & CANFD_MSG_RX_EXT_SID_MASK) << 18)
-               | ((*(volatile uint32_t *)(&CFD2FLTOBJ0 + (filterNum * CANFD_FILTER_OBJ_OFFSET)) & CANFD_MSG_RX_EXT_EID_MASK) >> 11))
+            id = (*(volatile uint32_t *)(&CFD2FLTOBJ0 + (filterNum * CANFD_FILTER_OBJ_OFFSET)) & CANFD_MSG_RX_EXT_SID_MASK) << 18;
+            id = (id | ((*(volatile uint32_t *)(&CFD2FLTOBJ0 + (filterNum * CANFD_FILTER_OBJ_OFFSET)) & CANFD_MSG_RX_EXT_EID_MASK) >> 11))
                & CANFD_MSG_EID_MASK;
         }
         else
@@ -516,7 +555,11 @@ void CAN2_MessageAcceptanceFilterMaskSet(uint8_t acceptanceFilterMaskNum, uint32
 {
     /* Switch the CAN module to Configuration mode. Wait until the switch is complete */
     CFD2CON = (CFD2CON & ~_CFD2CON_REQOP_MASK) | ((CANFD_CONFIGURATION_MODE << _CFD2CON_REQOP_POSITION) & _CFD2CON_REQOP_MASK);
-    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_CONFIGURATION_MODE);
+    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_CONFIGURATION_MODE)
+    {
+        /* Do Nothing */
+
+    }
 
     if (id > CANFD_MSG_SID_MASK)
     {
@@ -529,7 +572,11 @@ void CAN2_MessageAcceptanceFilterMaskSet(uint8_t acceptanceFilterMaskNum, uint32
 
     /* Switch the CAN module to CANFD_OPERATION_MODE. Wait until the switch is complete */
     CFD2CON = (CFD2CON & ~_CFD2CON_REQOP_MASK) | ((CANFD_OPERATION_MODE << _CFD2CON_REQOP_POSITION) & _CFD2CON_REQOP_MASK);
-    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_OPERATION_MODE);
+    while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_OPERATION_MODE)
+    {
+        /* Do Nothing */
+
+    }
 }
 
 // *****************************************************************************
@@ -552,10 +599,10 @@ uint32_t CAN2_MessageAcceptanceFilterMaskGet(uint8_t acceptanceFilterMaskNum)
 {
     uint32_t id = 0;
 
-    if (*(volatile uint32_t *)(&CFD2MASK0 + (acceptanceFilterMaskNum * CANFD_ACCEPTANCE_MASK_OFFSET)) & _CFD2MASK0_MIDE_MASK)
+    if ((*(volatile uint32_t *)(&CFD2MASK0 + (acceptanceFilterMaskNum * CANFD_ACCEPTANCE_MASK_OFFSET)) & _CFD2MASK0_MIDE_MASK) != 0U)
     {
-        id = (((*(volatile uint32_t *)(&CFD2MASK0 + (acceptanceFilterMaskNum * CANFD_ACCEPTANCE_MASK_OFFSET)) & CANFD_MSG_RX_EXT_SID_MASK) << 18)
-           | ((*(volatile uint32_t *)(&CFD2MASK0 + (acceptanceFilterMaskNum * CANFD_ACCEPTANCE_MASK_OFFSET)) & CANFD_MSG_RX_EXT_EID_MASK) >> 11))
+        id = (*(volatile uint32_t *)(&CFD2MASK0 + (acceptanceFilterMaskNum * CANFD_ACCEPTANCE_MASK_OFFSET)) & CANFD_MSG_RX_EXT_SID_MASK) << 18;
+        id = (id | ((*(volatile uint32_t *)(&CFD2MASK0 + (acceptanceFilterMaskNum * CANFD_ACCEPTANCE_MASK_OFFSET)) & CANFD_MSG_RX_EXT_EID_MASK) >> 11))
            & CANFD_MSG_EID_MASK;
     }
     else
@@ -597,7 +644,7 @@ bool CAN2_TransmitEventFIFOElementGet(uint32_t *id, uint32_t *sequence, uint32_t
         txEventFIFOElement = (CANFD_TX_EVENT_FIFO_ELEMENT *)PA_TO_KVA1(CFD2TEFUA);
 
         /* Check if it's a extended message type */
-        if (txEventFIFOElement->te1 & CANFD_MSG_IDE_MASK)
+        if ((txEventFIFOElement->te1 & CANFD_MSG_IDE_MASK) != 0U)
         {
             *id = txEventFIFOElement->te0 & CANFD_MSG_EID_MASK;
         }
@@ -639,18 +686,18 @@ bool CAN2_TransmitEventFIFOElementGet(uint32_t *id, uint32_t *sequence, uint32_t
 */
 CANFD_ERROR CAN2_ErrorGet(void)
 {
-    CANFD_ERROR error = CANFD_ERROR_NONE;
+    uint32_t error = (uint32_t)CANFD_ERROR_NONE;
     uint32_t errorStatus = CFD2TREC;
 
     /* Check if error occurred */
-    error = (CANFD_ERROR)((errorStatus & _CFD2TREC_EWARN_MASK) |
-                        (errorStatus & _CFD2TREC_RXWARN_MASK) |
-                        (errorStatus & _CFD2TREC_TXWARN_MASK) |
-                        (errorStatus & _CFD2TREC_RXBP_MASK) |
-                        (errorStatus & _CFD2TREC_TXBP_MASK) |
-                        (errorStatus & _CFD2TREC_TXBO_MASK));
+    error = ((errorStatus & _CFD2TREC_EWARN_MASK) |
+                (errorStatus & _CFD2TREC_RXWARN_MASK) |
+                (errorStatus & _CFD2TREC_TXWARN_MASK) |
+                (errorStatus & _CFD2TREC_RXBP_MASK) |
+                (errorStatus & _CFD2TREC_TXBP_MASK) |
+                (errorStatus & _CFD2TREC_TXBO_MASK));
 
-    return error;
+    return (CANFD_ERROR)error;
 }
 
 // *****************************************************************************
@@ -696,13 +743,13 @@ void CAN2_ErrorCountGet(uint8_t *txErrorCount, uint8_t *rxErrorCount)
 */
 bool CAN2_InterruptGet(uint8_t fifoQueueNum, CANFD_FIFO_INTERRUPT_FLAG_MASK fifoInterruptFlagMask)
 {
-    if (fifoQueueNum == 0)
+    if (fifoQueueNum == 0U)
     {
-        return ((CFD2TXQSTA & fifoInterruptFlagMask) != 0x0);
+        return ((CFD2TXQSTA & (uint32_t)fifoInterruptFlagMask) != 0x0U);
     }
     else
     {
-        return ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) & fifoInterruptFlagMask) != 0x0);
+        return ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoQueueNum - 1U) * CANFD_FIFO_OFFSET)) & (uint32_t)fifoInterruptFlagMask) != 0x0U);
     }
 }
 
@@ -725,13 +772,13 @@ bool CAN2_InterruptGet(uint8_t fifoQueueNum, CANFD_FIFO_INTERRUPT_FLAG_MASK fifo
 */
 bool CAN2_TxFIFOQueueIsFull(uint8_t fifoQueueNum)
 {
-    if (fifoQueueNum == 0)
+    if (fifoQueueNum == 0U)
     {
         return ((CFD2TXQSTA & _CFD2TXQSTA_TXQNIF_MASK) != _CFD2TXQSTA_TXQNIF_MASK);
     }
     else
     {
-        return ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoQueueNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) != _CFD2FIFOSTA1_TFNRFNIF_MASK);
+        return ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoQueueNum - 1U) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) != _CFD2FIFOSTA1_TFNRFNIF_MASK);
     }
 }
 
@@ -765,9 +812,9 @@ bool CAN2_AutoRTRResponseSet(uint32_t id, uint8_t length, uint8_t* data, uint8_t
 
     if (fifoNum <= CANFD_NUM_OF_FIFO)
     {
-        if ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) == _CFD2FIFOSTA1_TFNRFNIF_MASK)
+        if ((*(volatile uint32_t *)(&CFD2FIFOSTA1 + ((fifoNum - 1U) * CANFD_FIFO_OFFSET)) & _CFD2FIFOSTA1_TFNRFNIF_MASK) == _CFD2FIFOSTA1_TFNRFNIF_MASK)
         {
-            txMessage = (CANFD_TX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)));
+            txMessage = (CANFD_TX_MSG_OBJECT *)PA_TO_KVA1(*(volatile uint32_t *)(&CFD2FIFOUA1 + ((fifoNum - 1U) * CANFD_FIFO_OFFSET)));
             status = true;
         }
     }
@@ -784,22 +831,153 @@ bool CAN2_AutoRTRResponseSet(uint32_t id, uint8_t length, uint8_t* data, uint8_t
         else
         {
             txMessage->t0 = id;
-            txMessage->t1 = 0;
+            txMessage->t1 = 0U;
         }
 
         /* Limit length */
-        if (length > 8)
-            length = 8;
+        if (length > 8U)
+        {
+            length = 8U;
+        }
         txMessage->t1 |= length;
 
         while(count < length)
         {
-            txMessage->data[count++] = *data++;
+            txMessage->data[count] = *data;
+            count++;
+            data++;
         }
 
         /* Set UINC to respond to RTR */
-        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
+        *(volatile uint32_t *)(&CFD2FIFOCON1 + ((fifoNum - 1U) * CANFD_FIFO_OFFSET)) |= _CFD2FIFOCON1_UINC_MASK;
     }
     return status;
 }
 
+bool CAN2_BitTimingCalculationGet(CAN_BIT_TIMING_SETUP *setup, CAN_BIT_TIMING *bitTiming)
+{
+    bool status = false;
+    uint32_t numOfTimeQuanta;
+    uint8_t tseg1;
+    float temp1;
+    float temp2;
+
+    if ((setup != NULL) && (bitTiming != NULL))
+    {
+        if (setup->nominalBitTimingSet == true)
+        {
+            numOfTimeQuanta = CAN2_CLOCK_FREQUENCY / (setup->nominalBitRate * ((uint32_t)setup->nominalPrescaler + 1U));
+            if ((numOfTimeQuanta >= 4U) && (numOfTimeQuanta <= 385U))
+            {
+                if (setup->nominalSamplePoint < 50.0f)
+                {
+                    setup->nominalSamplePoint = 50.0f;
+                }
+                temp1 = (float)numOfTimeQuanta;
+                temp2 = (temp1 * setup->nominalSamplePoint) / 100.0f;
+                tseg1 = (uint8_t)temp2;
+                bitTiming->nominalBitTiming.nominalTimeSegment2 = (uint8_t)(numOfTimeQuanta - tseg1 - 1U);
+                bitTiming->nominalBitTiming.nominalTimeSegment1 = tseg1 - 2U;
+                bitTiming->nominalBitTiming.nominalSJW = bitTiming->nominalBitTiming.nominalTimeSegment2;
+                bitTiming->nominalBitTiming.nominalPrescaler = setup->nominalPrescaler;
+                bitTiming->nominalBitTimingSet = true;
+                status = true;
+            }
+            else
+            {
+                bitTiming->nominalBitTimingSet = false;
+            }
+        }
+        if (setup->dataBitTimingSet == true)
+        {
+            numOfTimeQuanta = CAN2_CLOCK_FREQUENCY / (setup->dataBitRate * ((uint32_t)setup->dataPrescaler + 1U));
+            if ((numOfTimeQuanta >= 4U) && (numOfTimeQuanta <= 49U))
+            {
+                if (setup->dataSamplePoint < 50.0f)
+                {
+                    setup->dataSamplePoint = 50.0f;
+                }
+                temp1 = (float)numOfTimeQuanta;
+                temp2 = (temp1 * setup->dataSamplePoint) / 100.0f;
+                tseg1 = (uint8_t)temp2;
+                bitTiming->dataBitTiming.dataTimeSegment2 = (uint8_t)(numOfTimeQuanta - tseg1 - 1U);
+                bitTiming->dataBitTiming.dataTimeSegment1 = tseg1 - 2U;
+                bitTiming->dataBitTiming.dataSJW = bitTiming->dataBitTiming.dataTimeSegment2;
+                bitTiming->dataBitTiming.dataPrescaler = setup->dataPrescaler;
+                bitTiming->dataBitTimingSet = true;
+                status = true;
+            }
+            else
+            {
+                bitTiming->dataBitTimingSet = false;
+                status = false;
+            }
+        }
+    }
+
+    return status;
+}
+
+bool CAN2_BitTimingSet(CAN_BIT_TIMING *bitTiming)
+{
+    bool status = false;
+    bool nominalBitTimingSet = false;
+    bool dataBitTimingSet = false;
+
+    if ((bitTiming->nominalBitTimingSet == true)
+    && (bitTiming->nominalBitTiming.nominalTimeSegment1 >= 0x1U)
+    && (bitTiming->nominalBitTiming.nominalTimeSegment2 <= 0x7FU)
+    && (bitTiming->nominalBitTiming.nominalSJW <= 0x7FU))
+    {
+        nominalBitTimingSet = true;
+    }
+
+    if  ((bitTiming->dataBitTimingSet == true)
+    &&  (bitTiming->dataBitTiming.dataTimeSegment1 <= 0x1FU)
+    &&  (bitTiming->dataBitTiming.dataTimeSegment2 <= 0xFU)
+    &&  (bitTiming->dataBitTiming.dataSJW <= 0xFU))
+    {
+        dataBitTimingSet = true;
+    }
+
+    if ((nominalBitTimingSet == true) || (dataBitTimingSet == true))
+    {
+        /* Switch the CAN module to Configuration mode. Wait until the switch is complete */
+        CFD2CON = (CFD2CON & ~_CFD2CON_REQOP_MASK) | ((CANFD_CONFIGURATION_MODE << _CFD2CON_REQOP_POSITION) & _CFD2CON_REQOP_MASK);
+        while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_CONFIGURATION_MODE)
+        {
+            /* Do Nothing */
+        }
+
+        if (dataBitTimingSet == true)
+        {
+            /* Set the Data bitrate */
+            CFD2DBTCFG = (((uint32_t)bitTiming->dataBitTiming.dataPrescaler << _CFD2DBTCFG_BRP_POSITION) & _CFD2DBTCFG_BRP_MASK)
+                       | (((uint32_t)bitTiming->dataBitTiming.dataTimeSegment1 << _CFD2DBTCFG_TSEG1_POSITION) & _CFD2DBTCFG_TSEG1_MASK)
+                       | (((uint32_t)bitTiming->dataBitTiming.dataTimeSegment2 << _CFD2DBTCFG_TSEG2_POSITION) & _CFD2DBTCFG_TSEG2_MASK)
+                       | (((uint32_t)bitTiming->dataBitTiming.dataSJW << _CFD2DBTCFG_SJW_POSITION) & _CFD2DBTCFG_SJW_MASK);
+        }
+
+        if (nominalBitTimingSet == true)
+        {
+            /* Set the Nominal bitrate */
+            CFD2NBTCFG = (((uint32_t)bitTiming->nominalBitTiming.nominalPrescaler << _CFD2NBTCFG_BRP_POSITION) & _CFD2NBTCFG_BRP_MASK)
+                       | (((uint32_t)bitTiming->nominalBitTiming.nominalTimeSegment1 << _CFD2NBTCFG_TSEG1_POSITION) & _CFD2NBTCFG_TSEG1_MASK)
+                       | (((uint32_t)bitTiming->nominalBitTiming.nominalTimeSegment2 << _CFD2NBTCFG_TSEG2_POSITION) & _CFD2NBTCFG_TSEG2_MASK)
+                       | (((uint32_t)bitTiming->nominalBitTiming.nominalSJW << _CFD2NBTCFG_SJW_POSITION) & _CFD2NBTCFG_SJW_MASK);
+        }
+
+        /* Switch the CAN module to CANFD_OPERATION_MODE. Wait until the switch is complete */
+        CFD2CON = (CFD2CON & ~_CFD2CON_REQOP_MASK) | ((CANFD_OPERATION_MODE << _CFD2CON_REQOP_POSITION) & _CFD2CON_REQOP_MASK);
+        while(((CFD2CON & _CFD2CON_OPMOD_MASK) >> _CFD2CON_OPMOD_POSITION) != CANFD_OPERATION_MODE)
+        {
+            /* Do Nothing */
+        }
+
+        status = true;
+    }
+    return status;
+}
+
+
+/* MISRAC 2012 deviation block end */
