@@ -60,13 +60,22 @@
 // *****************************************************************************
 
 
-void EXTERNAL_0_InterruptHandler( void );
-void TIMER_1_InterruptHandler( void );
-void CHANGE_NOTICE_A_InterruptHandler( void );
-
-
-
 /* All the handlers are defined here.  Each will call its PLIB-specific function. */
+// *****************************************************************************
+// *****************************************************************************
+// Section: System Interrupt Vector declarations
+// *****************************************************************************
+// *****************************************************************************
+void EXTERNAL_0_Handler (void);
+void TIMER_1_Handler (void);
+void CHANGE_NOTICE_A_Handler (void);
+
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: System Interrupt Vector definitions
+// *****************************************************************************
+// *****************************************************************************
 void __ISR(_EXTERNAL_0_VECTOR, ipl2SRS) EXTERNAL_0_Handler (void)
 {
     EXTERNAL_0_InterruptHandler();

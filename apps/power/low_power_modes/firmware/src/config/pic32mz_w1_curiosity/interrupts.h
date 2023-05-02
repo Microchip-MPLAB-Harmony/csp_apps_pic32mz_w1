@@ -57,6 +57,10 @@
 // *****************************************************************************
 // *****************************************************************************
 
+void EXTERNAL_0_InterruptHandler( void );
+void TIMER_1_InterruptHandler( void );
+void CHANGE_NOTICE_A_InterruptHandler( void );
+
 
 
 #endif // INTERRUPTS_H
