@@ -57,6 +57,11 @@
 // *****************************************************************************
 // *****************************************************************************
 
+void CHANGE_NOTICE_K_InterruptHandler( void );
+void SPI2_FAULT_InterruptHandler( void );
+void SPI2_RX_InterruptHandler( void );
+void SPI2_TX_InterruptHandler( void );
+
 
 
 #endif // INTERRUPTS_H
