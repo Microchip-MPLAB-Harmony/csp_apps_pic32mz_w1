@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------
  * MPLAB XC Compiler -  PIC32MZ1025W104132 linker script
- * Build date : Mar 21 2022
+ * Build date : Apr 06 2022
  * 
  * Copyright (c) 2022, Microchip Technology Inc. and its subsidiaries ("Microchip")
  * All rights reserved.
