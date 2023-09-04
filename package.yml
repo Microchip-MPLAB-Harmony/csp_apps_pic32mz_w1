@@ -9,7 +9,7 @@ package:
   dependencies:
     - name: "csp"
       type: "package"
-      version: "v3.17.0"
+      version: "dev"
     - name: "dev_packs"
       type: "package"
-      version: "v3.17.0"
+      version: "dev"
