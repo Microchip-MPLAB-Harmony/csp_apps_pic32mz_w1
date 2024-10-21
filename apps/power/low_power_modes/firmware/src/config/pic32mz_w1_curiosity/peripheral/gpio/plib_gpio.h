@@ -69,6 +69,7 @@
 #define LED_OutputEnable()      (TRISKCLR = (1U<<1))
 #define LED_InputEnable()       (TRISKSET = (1U<<1))
 #define LED_Get()               ((PORTK >> 1) & 0x1U)
+#define LED_GetLatch()          ((LATK >> 1) & 0x1U)
 #define LED_PIN                  GPIO_PIN_RK1
 
 /*** Macros for CN_INT pin ***/
@@ -78,6 +79,7 @@
 #define CN_INT_OutputEnable()      (TRISACLR = (1U<<10))
 #define CN_INT_InputEnable()       (TRISASET = (1U<<10))
 #define CN_INT_Get()               ((PORTA >> 10) & 0x1U)
+#define CN_INT_GetLatch()          ((LATA >> 10) & 0x1U)
 #define CN_INT_PIN                  GPIO_PIN_RA10
 #define CN_INT_InterruptEnable()   (CNENASET = (1U<<10))
 #define CN_INT_InterruptDisable()  (CNENACLR = (1U<<10))
@@ -259,7 +261,7 @@ typedef struct {
 
 static inline void GPIO_PinWrite(GPIO_PIN pin, bool value)
 {
-	 uint32_t xvalue = (uint32_t)value;
+     uint32_t xvalue = (uint32_t)value;
     GPIO_PortWrite((pin>>4U), (uint32_t)(0x1U) << (pin & 0xFU), (xvalue) << (pin & 0xFU));
 }
 

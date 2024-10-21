@@ -111,11 +111,11 @@
         <targetPluginBoard/>
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.21</languageToolchainVersion>
+        <languageToolchainVersion>4.45</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.6.220"/>
+        <pack name="PIC32MZ-W_DFP" vendor="Microchip" version="1.9.330"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
