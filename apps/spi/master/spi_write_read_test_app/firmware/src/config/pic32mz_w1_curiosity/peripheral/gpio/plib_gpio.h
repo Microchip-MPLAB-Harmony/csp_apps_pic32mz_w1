@@ -69,6 +69,7 @@
 #define APP_SLAVE_CS_OutputEnable()      (TRISKCLR = (1U<<7))
 #define APP_SLAVE_CS_InputEnable()       (TRISKSET = (1U<<7))
 #define APP_SLAVE_CS_Get()               ((PORTK >> 7) & 0x1U)
+#define APP_SLAVE_CS_GetLatch()          ((LATK >> 7) & 0x1U)
 #define APP_SLAVE_CS_PIN                  GPIO_PIN_RK7
 
 /*** Macros for LED_RED pin ***/
@@ -78,6 +79,7 @@
 #define LED_RED_OutputEnable()      (TRISKCLR = (1U<<1))
 #define LED_RED_InputEnable()       (TRISKSET = (1U<<1))
 #define LED_RED_Get()               ((PORTK >> 1) & 0x1U)
+#define LED_RED_GetLatch()          ((LATK >> 1) & 0x1U)
 #define LED_RED_PIN                  GPIO_PIN_RK1
 
 /*** Macros for SWITCH pin ***/
@@ -87,6 +89,7 @@
 #define SWITCH_OutputEnable()      (TRISACLR = (1U<<10))
 #define SWITCH_InputEnable()       (TRISASET = (1U<<10))
 #define SWITCH_Get()               ((PORTA >> 10) & 0x1U)
+#define SWITCH_GetLatch()          ((LATA >> 10) & 0x1U)
 #define SWITCH_PIN                  GPIO_PIN_RA10
 
 /*** Macros for APP_SLAVE_BUSY_PIN pin ***/
@@ -96,6 +99,7 @@
 #define APP_SLAVE_BUSY_PIN_OutputEnable()      (TRISBCLR = (1U<<8))
 #define APP_SLAVE_BUSY_PIN_InputEnable()       (TRISBSET = (1U<<8))
 #define APP_SLAVE_BUSY_PIN_Get()               ((PORTB >> 8) & 0x1U)
+#define APP_SLAVE_BUSY_PIN_GetLatch()          ((LATB >> 8) & 0x1U)
 #define APP_SLAVE_BUSY_PIN_PIN                  GPIO_PIN_RB8
 
 
@@ -251,7 +255,7 @@ void GPIO_PortOutputEnable(GPIO_PORT port, uint32_t mask);
 
 static inline void GPIO_PinWrite(GPIO_PIN pin, bool value)
 {
-	 uint32_t xvalue = (uint32_t)value;
+     uint32_t xvalue = (uint32_t)value;
     GPIO_PortWrite((pin>>4U), (uint32_t)(0x1U) << (pin & 0xFU), (xvalue) << (pin & 0xFU));
 }
 
