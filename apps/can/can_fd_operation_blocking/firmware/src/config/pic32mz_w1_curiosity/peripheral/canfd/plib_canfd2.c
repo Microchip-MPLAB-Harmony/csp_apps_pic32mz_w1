@@ -854,7 +854,7 @@ bool CAN2_AutoRTRResponseSet(uint32_t id, uint8_t length, uint8_t* data, uint8_t
     return status;
 }
 
-bool CAN2_BitTimingCalculationGet(CAN_BIT_TIMING_SETUP *setup, CAN_BIT_TIMING *bitTiming)
+bool CAN2_BitTimingCalculationGet(CANFD_BIT_TIMING_SETUP *setup, CANFD_BIT_TIMING *bitTiming)
 {
     bool status = false;
     uint32_t numOfTimeQuanta;
@@ -918,7 +918,7 @@ bool CAN2_BitTimingCalculationGet(CAN_BIT_TIMING_SETUP *setup, CAN_BIT_TIMING *b
     return status;
 }
 
-bool CAN2_BitTimingSet(CAN_BIT_TIMING *bitTiming)
+bool CAN2_BitTimingSet(CANFD_BIT_TIMING *bitTiming)
 {
     bool status = false;
     bool nominalBitTimingSet = false;
