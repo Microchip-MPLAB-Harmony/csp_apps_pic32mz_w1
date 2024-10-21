@@ -48,9 +48,9 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
-
 #include "interrupts.h"
 #include "definitions.h"
+
 
 
 // *****************************************************************************
@@ -75,12 +75,12 @@ void ADC_DATA15_Handler (void);
 // Section: System Interrupt Vector definitions
 // *****************************************************************************
 // *****************************************************************************
-void __ISR(_TIMER_1_VECTOR, ipl1SRS) TIMER_1_Handler (void)
+void __attribute__((used)) __ISR(_TIMER_1_VECTOR, ipl1SRS) TIMER_1_Handler (void)
 {
     TIMER_1_InterruptHandler();
 }
 
-void __ISR(_ADC_DATA15_VECTOR, ipl1SRS) ADC_DATA15_Handler (void)
+void __attribute__((used)) __ISR(_ADC_DATA15_VECTOR, ipl1SRS) ADC_DATA15_Handler (void)
 {
     ADC_DATA15_InterruptHandler();
 }
