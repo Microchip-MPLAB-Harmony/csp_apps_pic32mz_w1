@@ -69,6 +69,7 @@
 #define GPIO_RB8_OutputEnable()      (TRISBCLR = (1U<<8))
 #define GPIO_RB8_InputEnable()       (TRISBSET = (1U<<8))
 #define GPIO_RB8_Get()               ((PORTB >> 8) & 0x1U)
+#define GPIO_RB8_GetLatch()          ((LATB >> 8) & 0x1U)
 #define GPIO_RB8_PIN                  GPIO_PIN_RB8
 
 
@@ -248,7 +249,7 @@ typedef struct {
 
 static inline void GPIO_PinWrite(GPIO_PIN pin, bool value)
 {
-	 uint32_t xvalue = (uint32_t)value;
+     uint32_t xvalue = (uint32_t)value;
     GPIO_PortWrite((pin>>4U), (uint32_t)(0x1U) << (pin & 0xFU), (xvalue) << (pin & 0xFU));
 }
 
