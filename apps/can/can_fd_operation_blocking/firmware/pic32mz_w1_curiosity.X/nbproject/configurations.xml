@@ -31,16 +31,6 @@
       </logicalFolder>
     </logicalFolder>
     <logicalFolder displayName="Important Files" name="ExternalFiles" projectFiles="true">
-      <logicalFolder displayName="pic32mz_w1_curiosity.mhc" name="f1" projectFiles="true">
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/can2.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/core.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/project.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/stdio.yml</itemPath>
-        <itemPath>../src/config/pic32mz_w1_curiosity/pic32mz_w1_curiosity.mhc/uart1.yml</itemPath>
-      </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml</itemPath>
       <itemPath>can_fd_operation_blocking_pic32mz_w1_curiosity.mc3</itemPath>
