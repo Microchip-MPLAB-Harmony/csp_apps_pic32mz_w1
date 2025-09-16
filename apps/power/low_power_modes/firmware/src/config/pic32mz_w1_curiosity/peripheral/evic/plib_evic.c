@@ -45,7 +45,7 @@
 #include "interrupts.h"
 
 
-volatile static EXT_INT_PIN_CALLBACK_OBJ extInt0CbObj;
+static volatile EXT_INT_PIN_CALLBACK_OBJ extInt0CbObj;
 // *****************************************************************************
 // *****************************************************************************
 // Section: IRQ Implementation
