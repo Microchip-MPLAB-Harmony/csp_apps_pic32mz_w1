@@ -1,0 +1,59 @@
+configVersion: 1.0.0
+coreVersion: 5.8.2
+device: PIC32MZ1025W104132
+deviceLibrary:
+  className: com.microchip.mcc.harmony.Harmony3Library
+groupModules: []
+modules:
+- can2
+- core
+- dfp
+- stdio
+- uart1
+generatedFileHashHistoryMap:
+- file: ..\src\config\pic32mz_w1_curiosity\definitions.h
+  hash: 007594257dfb54ce6a4ea308ef5ce1a1f75a0045a862dd1f28cf471389c30540
+- file: ..\src\config\pic32mz_w1_curiosity\device.h
+  hash: 4d4341a6f9628cea0bf73f980b639f7cb81089e55a60ad7e434be2a71e477442
+- file: ..\src\config\pic32mz_w1_curiosity\exceptions.c
+  hash: 8b79318232f6244de29d397802709aa7288f5c41dad4a4b5c1f58501a481530e
+- file: ..\src\config\pic32mz_w1_curiosity\initialization.c
+  hash: 988ce235864d3fecbbb2a4fe62d8aa3f60b7ee8a3348dbceb0cde69556823edb
+- file: ..\src\config\pic32mz_w1_curiosity\interrupts.c
+  hash: 797936386be1072a51a41ed55d38dc4a8ed2bbf29a0a6e89fba8ee6651ac3610
+- file: ..\src\config\pic32mz_w1_curiosity\interrupts.h
+  hash: 2b6f3a9da8b2f61b5ea3f584838ad851b151646b5fda0fb709cc05e65576fd37
+- file: ..\src\config\pic32mz_w1_curiosity\p32MZ1025W104132.ld
+  hash: 35861b67340e3270f2fcd1f7581d11a2a4d11e78db12c06e5551f8cbace1e5a8
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\canfd\plib_canfd2.c
+  hash: bfb2fcbb857e75a05c03f25fd3b01d75a728c3d59b0bc29ccf2d6783c81926e1
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\canfd\plib_canfd2.h
+  hash: ac8f91f961430d1b5b65e11a22bce7fb8bcc7f5e3f12c474fd8acc5aa8e9507b
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\canfd\plib_canfd_common.h
+  hash: fbf5091541d361f023f2c1fa3f04173ed84db75e64f475d14e1919856f1bf620
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\clk\plib_clk.c
+  hash: 755cfd7807825bfbe37e8937d4ba7bbc18d0e2730772bb0970b0145ccd2c8187
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\clk\plib_clk.h
+  hash: e898efaccaf25a733d0de02c3ccac5011ea50f04fa4c24fe4790d16f64d15e17
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\evic\plib_evic.c
+  hash: 60b925c74bd2c846e289fd57ad959806593544003ab2cab1e13ea9982985d1e7
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\evic\plib_evic.h
+  hash: 61f076457c5302ca6a2c990e31e4a588ae923795991315f68dd937bc31af9168
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\gpio\plib_gpio.c
+  hash: 59c39fad0ece336cd16f8afcbf23569a84f0797d073723a78d6fb0c95267d25f
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\gpio\plib_gpio.h
+  hash: f3c5c99936ca9aee00ea4590235cfb29b343ad6223055df04b6c72a246dfe119
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\uart\plib_uart1.c
+  hash: a81fa8ae1f114689758d2dbf6728096c2bbcf702cc237f9ebe2b1d12678b6314
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\uart\plib_uart1.h
+  hash: 87e620eb1fd84eeaaea82bf841145ab5ecbf3a453d1889a0d44ffd9453c3f482
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\uart\plib_uart_common.h
+  hash: 70213cd740b3ff9a591d93ad6aac9493335851db084dd862275effacdebf710d
+- file: ..\src\config\pic32mz_w1_curiosity\pmu_init.c
+  hash: 70937443833ec65619bf2d685fce49cde38145bed57c625401be7fc8b26192c6
+- file: ..\src\config\pic32mz_w1_curiosity\stdio\xc32_monitor.c
+  hash: 34c7efa285dd6778faf01a0097bf7bebc131e7a8a0ed97bb737ff3e0a39895d2
+- file: ..\src\config\pic32mz_w1_curiosity\toolchain_specifics.h
+  hash: fd2fc7bbe60706409cc0c0a525825c0194f6f71adc0a89e6310041f06dc2f645
+- file: ..\src\main.c
+  hash: d3c233d419e6304bfacbafc18cc68c0f5c26e365f23b20ea40ccfac458f664c5
