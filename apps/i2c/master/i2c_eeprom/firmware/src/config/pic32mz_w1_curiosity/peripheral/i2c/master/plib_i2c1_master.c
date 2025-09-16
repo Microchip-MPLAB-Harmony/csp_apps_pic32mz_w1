@@ -61,7 +61,7 @@
 #define NOP asm(" NOP")
 
 
-volatile static I2C_OBJ i2c1MasterObj;
+static volatile I2C_OBJ i2c1MasterObj;
 
 
 void I2C1_Initialize(void)
@@ -544,7 +544,7 @@ bool I2C1_TransferSetup(I2C_TRANSFER_SETUP* setup, uint32_t srcClkFreq )
     {
         srcClkFreq = 100000000UL;
     }
-    
+
     fBaudValue = (((float)srcClkFreq / 2.0f) * ((1.0f / (float)i2cClkSpeed) - (0.000000200f * 2.0f))) - 3.0f;
     baudValue = (uint32_t)fBaudValue;
 
