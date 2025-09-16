@@ -1,0 +1,44 @@
+configVersion: 1.0.0
+coreVersion: 5.8.2
+device: PIC32MZ1025W104132
+deviceLibrary:
+  className: com.microchip.mcc.harmony.Harmony3Library
+groupModules: []
+modules:
+- core
+- dfp
+generatedFileHashHistoryMap:
+- file: ..\src\config\pic32mz_w1_curiosity\definitions.h
+  hash: 7b584d4f9435276f8d9f4df529d12fb6c2211118f5f166718ce216a1a00da869
+- file: ..\src\config\pic32mz_w1_curiosity\device.h
+  hash: 4d4341a6f9628cea0bf73f980b639f7cb81089e55a60ad7e434be2a71e477442
+- file: ..\src\config\pic32mz_w1_curiosity\exceptions.c
+  hash: 8b79318232f6244de29d397802709aa7288f5c41dad4a4b5c1f58501a481530e
+- file: ..\src\config\pic32mz_w1_curiosity\initialization.c
+  hash: 5aa14c331f29a5409888c7275844dcb4e19f782ef49d74debe243b0d8d29a90a
+- file: ..\src\config\pic32mz_w1_curiosity\interrupts.c
+  hash: df62764cc87ca238f71106954082b59475d6a051066b56ce8358c4d7732d5ce1
+- file: ..\src\config\pic32mz_w1_curiosity\interrupts.h
+  hash: cd0e2b57d9d3ba741b13648cc63016b968e569be7658cc45ce7053f0d3fefeb0
+- file: ..\src\config\pic32mz_w1_curiosity\p32MZ1025W104132.ld
+  hash: 35861b67340e3270f2fcd1f7581d11a2a4d11e78db12c06e5551f8cbace1e5a8
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\clk\plib_clk.c
+  hash: 46cae057309273f63137331191d78631dc517a63052b62b42bb8d283366fc1ff
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\clk\plib_clk.h
+  hash: e898efaccaf25a733d0de02c3ccac5011ea50f04fa4c24fe4790d16f64d15e17
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\evic\plib_evic.c
+  hash: 1d653cace86ab6849a51e47ca14e37bdcc353940a6a32e7f114d989980c19c4d
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\evic\plib_evic.h
+  hash: 61f076457c5302ca6a2c990e31e4a588ae923795991315f68dd937bc31af9168
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\gpio\plib_gpio.c
+  hash: 03f75e9f6affa13fe8ae05e9f3783f6b90c13994eaeda405eb4bc943cdeb8bb8
+- file: ..\src\config\pic32mz_w1_curiosity\peripheral\gpio\plib_gpio.h
+  hash: 6752e95cba9a6ec0496a1fe4c4af764705336b38d38d60f2be7e1540ead4f9d9
+- file: ..\src\config\pic32mz_w1_curiosity\pmu_init.c
+  hash: 70937443833ec65619bf2d685fce49cde38145bed57c625401be7fc8b26192c6
+- file: ..\src\config\pic32mz_w1_curiosity\stdio\xc32_monitor.c
+  hash: 858f8710d4287200a5ee7f3b3ad7c24f505aed9c05c16956ab0ff9f7bb162a6a
+- file: ..\src\config\pic32mz_w1_curiosity\toolchain_specifics.h
+  hash: fd2fc7bbe60706409cc0c0a525825c0194f6f71adc0a89e6310041f06dc2f645
+- file: ..\src\main.c
+  hash: d3c233d419e6304bfacbafc18cc68c0f5c26e365f23b20ea40ccfac458f664c5
