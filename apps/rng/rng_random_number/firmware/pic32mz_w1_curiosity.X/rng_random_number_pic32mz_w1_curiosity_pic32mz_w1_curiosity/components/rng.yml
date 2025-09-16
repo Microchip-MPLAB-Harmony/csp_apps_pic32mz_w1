@@ -1,0 +1,62 @@
+configVersion: 1.0.0
+componentName: rng
+coreVersion: 5.8.2
+device: PIC32MZ1025W104132
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: rng
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.23.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: rng
+          x: '30'
+          y: '60'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    RNGCON_PLEN:
+      attributes:
+        id: RNGCON_PLEN
+      children:
+      - children:
+        - attributes:
+            value: '64'
+          type: User
+        type: Values
+      type: Integer
+    RNGCON_TRNGMODE:
+      attributes:
+        id: RNGCON_TRNGMODE
+      children:
+      - children:
+        - attributes:
+            value: '1'
+          type: User
+        type: Values
+      type: KeyValueSet
+    RNGCON_VALUE:
+      attributes:
+        id: RNGCON_VALUE
+      children:
+      - children:
+        - attributes:
+            id: rng
+            value: '2112'
+          type: Dynamic
+        type: Values
+      type: Hex
+  userData: {}
