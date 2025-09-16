@@ -209,29 +209,11 @@ void CLK_Initialize( void )
              * The recommendation is to use SPLL as the System Clock.
              * Below code assumes that is the case in most practical use cases.
             *****************************************************************/
-            if((OSCCONbits.COSC & 0x2U) != 0U)
-            {
-                if(0U == (CLKSTATbits.POSCRDY & 0x1U))
-                {
-                    while(true)
-                    {
-                        /* Spin forever */
-                    }
-                }
-            }
-            else if(0U == (*PLLDBG & 0x1U))
-            {
-                /*POSC failed to start!*/
-                while(true)
-                {
-                   /* Spin forever */
-                }
-            }
-            else
-            {
-                /* Nothing to do */
-            }
-
+			while (0U == (*PLLDBG & 0x1U))
+			{
+				/* Spin forever */
+			}
+ 
             if(1U == DEVIDbits.VER || (((device_id & PART_NUM_MASK) >> PART_NUM_OFFSET) == (uint32_t)PIC32MZW1_G))
             {
                 /*Disabling internal schmitt-trigger to increase noise immunity */
