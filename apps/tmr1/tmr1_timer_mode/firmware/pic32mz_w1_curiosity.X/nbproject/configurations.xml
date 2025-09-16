@@ -27,9 +27,16 @@
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles" displayName="Important Files" projectFiles="true">
+      <logicalFolder name="tmr1_timer_mode_pic32mz_w1_curiosity_pic32mz_w1_curiosity" displayName="tmr1_timer_mode_pic32mz_w1_curiosity_pic32mz_w1_curiosity" projectFiles="true">
+        <itemPath>tmr1_timer_mode_pic32mz_w1_curiosity_pic32mz_w1_curiosity/mcc-config.mc4</itemPath>
+        <logicalFolder name="components" displayName="components" projectFiles="true">
+          <itemPath>tmr1_timer_mode_pic32mz_w1_curiosity_pic32mz_w1_curiosity/components/core.yml</itemPath>
+          <itemPath>tmr1_timer_mode_pic32mz_w1_curiosity_pic32mz_w1_curiosity/components/dfp.yml</itemPath>
+          <itemPath>tmr1_timer_mode_pic32mz_w1_curiosity_pic32mz_w1_curiosity/components/tmr1.yml</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml</itemPath>
-      <itemPath>tmr1_timer_mode_pic32mz_w1_curiosity.mc3</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript" displayName="Linker Files" projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
@@ -80,7 +87,7 @@
         <targetPluginBoard/>
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.45</languageToolchainVersion>
+        <languageToolchainVersion>4.60</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
