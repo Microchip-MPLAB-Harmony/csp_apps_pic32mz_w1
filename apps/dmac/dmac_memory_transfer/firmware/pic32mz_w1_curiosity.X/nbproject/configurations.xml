@@ -30,9 +30,17 @@
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles" displayName="Important Files" projectFiles="true">
+      <logicalFolder name="dmac_memory_transfer_pic32mz_w1_curiosity_pic32mz_w1_curiosity" displayName="dmac_memory_transfer_pic32mz_w1_curiosity_pic32mz_w1_curiosity" projectFiles="true">
+        <itemPath>dmac_memory_transfer_pic32mz_w1_curiosity_pic32mz_w1_curiosity/mcc-config.mc4</itemPath>
+        <logicalFolder name="components" displayName="components" projectFiles="true">
+          <itemPath>dmac_memory_transfer_pic32mz_w1_curiosity_pic32mz_w1_curiosity/components/core.yml</itemPath>
+          <itemPath>dmac_memory_transfer_pic32mz_w1_curiosity_pic32mz_w1_curiosity/components/dfp.yml</itemPath>
+          <itemPath>dmac_memory_transfer_pic32mz_w1_curiosity_pic32mz_w1_curiosity/components/stdio.yml</itemPath>
+          <itemPath>dmac_memory_transfer_pic32mz_w1_curiosity_pic32mz_w1_curiosity/components/uart1.yml</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/pic32mz_w1_curiosity/harmony-manifest-success.yml</itemPath>
-      <itemPath>dmac_memory_transfer_pic32mz_w1_curiosity.mc3</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript" displayName="Linker Files" projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
@@ -86,7 +94,7 @@
         <targetPluginBoard/>
         <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.45</languageToolchainVersion>
+        <languageToolchainVersion>4.60</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
