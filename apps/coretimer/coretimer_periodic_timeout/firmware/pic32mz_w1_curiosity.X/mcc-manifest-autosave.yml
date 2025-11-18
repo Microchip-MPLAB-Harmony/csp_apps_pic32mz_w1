@@ -2,8 +2,8 @@
 
 manifest_file_version: 1.0.0
 project: coretimer_periodic_timeout_pic32mz_w1_curiosity
-creation_date: 2025-09-16T17:02:35.064+00:00[UTC]
-operating_system: Windows 10
+creation_date: 2025-11-18T10:22:45.550+00:00[UTC]
+operating_system: Windows 11
 mcc_mode: IDE
 mcc_mode_version: v6.25
 device_name: PIC32MZ1025W104132
